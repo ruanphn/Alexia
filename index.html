@@ -103,18 +103,18 @@
                 </svg>
                 <div class="logo-wordmark">
                     <span class="logo-name">Alexia Capibaribe</span>
-                    <span class="logo-tagline">Advogada · Direito Digital</span>
+                    <span class="logo-tagline">Direito Digital & Proteção de Dados</span>
                 </div>
             </a>
 
             <nav>
                 <ul class="nav-links" id="nav-menu">
                     <li><a href="#hero">Início</a></li>
-                    <li><a href="#atuacao">Atuação</a></li>
+                    <li><a href="#atuacao">Especialidades</a></li>
                     <li><a href="#como-funciona">Como Funciona</a></li>
                     <li><a href="#diagnostico">Diagnóstico</a></li>
                     <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#artigos">Artigos</a></li>
                     <li>
                         <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20gostaria%20de%20agendar%20uma%20consulta."
                             target="_blank" class="btn btn-whatsapp" id="nav-cta-btn"
@@ -144,7 +144,7 @@
         <div class="hero-text-col">
             <div class="hero-eyebrow">
                 <span class="hero-eyebrow-line"></span>
-                Advogada · Direito Digital & Societário
+                Advogada · Direito Digital & Proteção de Dados
             </div>
 
             <h1 class="hero-title">
@@ -241,20 +241,20 @@
     <!-- ================================================================
          TRUST / MÉTRICAS
          ================================================================ -->
-    <section class="trust-section" aria-label="Números e métricas de conversão">
+    <section class="trust-section" aria-label="Números e métricas de autoridade">
         <div class="container">
             <div class="trust-grid">
                 <div class="trust-item">
-                    <div class="trust-number">+100</div>
-                    <div class="trust-label">Casos & Negócios Assessorados</div>
+                    <div class="trust-number">+25</div>
+                    <div class="trust-label">Projetos de Adequação à LGPD</div>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-number">+5</div>
+                    <div class="trust-number">+6</div>
                     <div class="trust-label">Anos de Atuação Jurídica</div>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-number">+250</div>
-                    <div class="trust-label">Contratos & Pareceres Tech</div>
+                    <div class="trust-number">+50</div>
+                    <div class="trust-label">Empresas Assessoradas</div>
                 </div>
                 <div class="trust-item">
                     <div class="trust-number">Brasil</div>
@@ -266,139 +266,350 @@
 
     <!-- ================================================================
          ÁREAS DE ATUAÇÃO — grid 2×2
+         ====    <!-- ================================================================
+         ESPECIALIDADES — Sistema de Abas Interativas
          ================================================================ -->
     <section id="atuacao">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header centered">
                 <span class="section-eyebrow">O que fazemos</span>
-                <h2 class="section-title">Especialidades Estratégicas</h2>
-                <p class="section-desc">Atuação preventiva e consultiva focada em empresas e executivos que operam no
+                <h2 class="section-title">Especialidades</h2>
+                <p class="section-desc">Atuação estratégica focada em empresas de pequeno e médio porte que operam no
                     ambiente digital com segurança, conformidade e inteligência jurídica.</p>
             </div>
 
-            <div class="areas-grid">
-                <!-- Card 1: Direito Digital -->
-                <div class="area-card" id="card-direito-digital">
-                    <span class="area-number" aria-hidden="true">01</span>
-                    <div class="area-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
+            <!-- Abas Minimalistas de Alta Costura -->
+            <div class="editorial-tabs-nav" role="tablist" aria-label="Especialidades jurídicas">
+                <button class="editorial-tab-btn active" role="tab" aria-selected="true" aria-controls="panel-digital" id="tab-digital" onclick="switchSpecialtyTab('digital')">
+                    Direito Digital
+                </button>
+                <button class="editorial-tab-btn" role="tab" aria-selected="false" aria-controls="panel-lgpd" id="tab-lgpd" onclick="switchSpecialtyTab('lgpd')">
+                    LGPD & Privacidade
+                </button>
+                <button class="editorial-tab-btn" role="tab" aria-selected="false" aria-controls="panel-contratos" id="tab-contratos" onclick="switchSpecialtyTab('contratos')">
+                    Contratos de Tecnologia
+                </button>
+                <button class="editorial-tab-btn" role="tab" aria-selected="false" aria-controls="panel-pi" id="tab-pi" onclick="switchSpecialtyTab('pi')">
+                    Propriedade Intelectual
+                </button>
+                <button class="editorial-tab-btn" role="tab" aria-selected="false" aria-controls="panel-saude" id="tab-saude" onclick="switchSpecialtyTab('saude')">
+                    Governança na Saúde
+                </button>
+            </div>
+
+            <!-- Conteúdo dos Painéis das Especialidades -->
+            <div class="specialty-panels">
+
+                <!-- PAINEL 1: Direito Digital -->
+                <div class="specialty-panel active" id="panel-digital" role="tabpanel" aria-labelledby="tab-digital">
+                    <div class="specialty-panel-header centered">
+                        <h3 class="panel-headline">Direito Digital & Defesa de Ativos Online</h3>
+                        <p class="panel-subheadline">Atuação estratégica e contenciosa diante dos desafios jurídicos do ambiente digital.</p>
                     </div>
-                    <h3 class="area-title">Direito Digital</h3>
-                    <p class="area-desc">Assessoria jurídica abrangente para empresas que operam no ambiente online,
-                        garantindo conformidade regulatória e segurança nas relações digitais.</p>
-                    <ul class="area-bullets">
-                        <li>Adequação a regulamentações do ambiente digital</li>
-                        <li>Defesa e prevenção de litígios e conflitos online</li>
-                        <li>Assessoria em plataformas, e-commerces e marketplaces</li>
-                        <li>Proteção de propriedade intelectual e ativos digitais</li>
-                    </ul>
-                    <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20tenho%20interesse%20em%20consultoria%20de%20Direito%20Digital."
-                        target="_blank" class="area-link" id="link-digital">
-                        Consultar especialidade
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    <div class="services-subgrid">
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">01</div>
+                            <h4 class="service-item-title">Remoção de Conteúdo Ofensivo</h4>
+                            <p class="service-item-desc">Retirada ágil de conteúdos ilícitos, ofensivos ou que violem a honra e a imagem de pessoas e empresas na internet.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">02</div>
+                            <h4 class="service-item-title">Recuperação de Contas e Perfis</h4>
+                            <p class="service-item-desc">Atuação técnica e jurídica para recuperar contas invadidas, bloqueadas ou desativadas no Instagram, WhatsApp, Facebook, TikTok e outras plataformas.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">03</div>
+                            <h4 class="service-item-title">Crimes e Golpes Virtuais</h4>
+                            <p class="service-item-desc">Orientação e medidas jurídicas imediatas em casos de golpes, fraudes digitais, clonagem de WhatsApp, perfis falsos e invasões de contas.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">04</div>
+                            <h4 class="service-item-title">Proteção da Honra e da Imagem</h4>
+                            <p class="service-item-desc">Medidas extrajudiciais e judiciais diante de difamação, calúnia, exposição indevida, ataques à reputação e publicações prejudiciais.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">05</div>
+                            <h4 class="service-item-title">Preservação de Provas Digitais</h4>
+                            <p class="service-item-desc">Orientação e adoção de medidas técnicas para preservar mensagens, conteúdos e registros com valor probatório para uso judicial ou extrajudicial.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">06</div>
+                            <h4 class="service-item-title">Direito Autoral na Internet</h4>
+                            <p class="service-item-desc">Proteção contra uso não autorizado de textos, fotografias, vídeos, marcas e outros conteúdos produzidos por terceiros na web.</p>
+                        </div>
+                        <div class="service-item-card service-item-card-featured">
+                            <div class="service-bullet-num">07</div>
+                            <h4 class="service-item-title">Inteligência Artificial e Direito</h4>
+                            <p class="service-item-desc">Assessoria jurídica no uso de ferramentas de IA, criação de conteúdo por IA generativa, direitos autorais de algoritmos, responsabilidade civil e mitigação de riscos regulatórios.</p>
+                        </div>
+                    </div>
+                    <!-- Botão de expansão no Mobile (oculto no desktop) -->
+                    <div class="expand-services-wrapper">
+                        <button type="button" class="btn-expand-services" onclick="toggleExpandPanel(this)" aria-expanded="false">
+                            <span>Ver todos os serviços (+4)</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="specialty-panel-footer">
+                        <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20gostaria%20de%20consultoria%20em%20Direito%20Digital." target="_blank" class="btn btn-whatsapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            Falar com a Dra. Alexia sobre Direito Digital
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Card 2: LGPD & Proteção de Dados -->
-                <div class="area-card" id="card-lgpd">
-                    <span class="area-number" aria-hidden="true">02</span>
-                    <div class="area-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
+                <!-- PAINEL 2: LGPD & Proteção de Dados -->
+                <div class="specialty-panel" id="panel-lgpd" role="tabpanel" aria-labelledby="tab-lgpd">
+                    <div class="specialty-panel-header centered">
+                        <h3 class="panel-headline">LGPD & Proteção de Dados Corporativa</h3>
+                        <p class="panel-subheadline">Governança, conformidade e redução de passivos regulatórios perante a ANPD.</p>
                     </div>
-                    <h3 class="area-title">LGPD & Proteção de Dados</h3>
-                    <p class="area-desc">Implementação e gestão de programas de conformidade à Lei Geral de Proteção de
-                        Dados, minimizando riscos de autuação e garantindo governança de dados sólida.</p>
-                    <ul class="area-bullets">
-                        <li>Mapeamento de fluxo e inventário de dados pessoais (Data Mapping)</li>
-                        <li>Elaboração e revisão de Políticas de Privacidade e Cookies</li>
-                        <li>Gestão de riscos, DPO as a Service e treinamento de equipes</li>
-                        <li>Planos de resposta a incidentes de segurança e reporte à ANPD</li>
-                    </ul>
-                    <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20preciso%20de%20assessoria%20em%20LGPD%20e%20Prote%C3%A7%C3%A3o%20de%20Dados."
-                        target="_blank" class="area-link" id="link-lgpd">
-                        Consultar especialidade
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    <div class="services-subgrid">
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">01</div>
+                            <h4 class="service-item-title">Adequação à LGPD</h4>
+                            <p class="service-item-desc">Estruturação e implementação das medidas jurídicas e organizacionais necessárias para conformidade integral com a legislação.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">02</div>
+                            <h4 class="service-item-title">Mapeamento de Dados Pessoais</h4>
+                            <p class="service-item-desc">Identificação detalhada dos dados tratados pela empresa, origens, finalidades de negócio, fluxos de circulação, compartilhamentos e bases legais.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">03</div>
+                            <h4 class="service-item-title">Governança e Compliance em Privacidade</h4>
+                            <p class="service-item-desc">Estruturação de políticas, procedimentos operacionais padrão, controles de acesso e mecanismos de governança contínua.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">04</div>
+                            <h4 class="service-item-title">Contratos e Cláusulas de Proteção de Dados</h4>
+                            <p class="service-item-desc">Elaboração e revisão minuciosa de contratos, termos aditivos e cláusulas relacionadas ao tratamento e compartilhamento com terceiros.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">05</div>
+                            <h4 class="service-item-title">Políticas de Privacidade e Proteção de Dados</h4>
+                            <p class="service-item-desc">Elaboração e revisão de políticas internas para colaboradores e externas para o público, incluindo termos de cookies e segurança da informação.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">06</div>
+                            <h4 class="service-item-title">Gestão de Incidentes e Vazamentos de Dados</h4>
+                            <p class="service-item-desc">Assessoria jurídica especializada na prevenção, identificação, contenção, plano de resposta rápida e comunicação regulatória.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">07</div>
+                            <h4 class="service-item-title">Treinamentos e Conscientização em Privacidade</h4>
+                            <p class="service-item-desc">Capacitação de colaboradores, gestores e lideranças para a criação e consolidação de uma cultura organizacional de proteção de dados.</p>
+                        </div>
+                        <div class="service-item-card service-item-card-featured">
+                            <div class="service-bullet-num">08</div>
+                            <h4 class="service-item-title">DPO / Encarregado de Dados</h4>
+                            <p class="service-item-desc">Atuação como Encarregado pelo Tratamento de Dados Pessoais (DPO as a Service), com orientação consultiva e apoio na manutenção do programa de privacidade.</p>
+                        </div>
+                    </div>
+                    <!-- Botão de expansão no Mobile (oculto no desktop) -->
+                    <div class="expand-services-wrapper">
+                        <button type="button" class="btn-expand-services" onclick="toggleExpandPanel(this)" aria-expanded="false">
+                            <span>Ver todos os serviços (+5)</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="specialty-panel-footer">
+                        <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20preciso%20de%20adequa%C3%A7%C3%A3o%20e%20governan%C3%A7a%20LGPD." target="_blank" class="btn btn-whatsapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            Falar com a Dra. Alexia sobre LGPD
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Card 3: Contratos de Tecnologia -->
-                <div class="area-card" id="card-contratos-tech">
-                    <span class="area-number" aria-hidden="true">03</span>
-                    <div class="area-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
+                <!-- PAINEL 3: Contratos de Tecnologia -->
+                <div class="specialty-panel" id="panel-contratos" role="tabpanel" aria-labelledby="tab-contratos">
+                    <div class="specialty-panel-header centered">
+                        <h3 class="panel-headline">Contratos de Tecnologia & Negócios Digitais</h3>
+                        <p class="panel-subheadline">Instrumentos jurídicos sob medida para proteger o valuation e a segurança operacional de empresas tech.</p>
                     </div>
-                    <h3 class="area-title">Contratos de Tecnologia</h3>
-                    <p class="area-desc">Redação e revisão minuciosa de acordos no ecossistema tech — SaaS,
-                        licenciamento de software, desenvolvimento ágil, APIs e parcerias estratégicas.</p>
-                    <ul class="area-bullets">
-                        <li>Contratos de SaaS, licenciamento e cessão de software</li>
-                        <li>Termos de Uso, DPA (Data Processing Agreements) e SLAs</li>
-                        <li>NDAs robustos e contratos de desenvolvimento ágil</li>
-                        <li>Due diligence jurídica para captação de investimento e M&A</li>
-                    </ul>
-                    <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20preciso%20de%20suporte%20em%20Contratos%20de%20Tecnologia."
-                        target="_blank" class="area-link" id="link-contratos">
-                        Consultar especialidade
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    <div class="services-subgrid">
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">01</div>
+                            <h4 class="service-item-title">Contratos de Software e SaaS</h4>
+                            <p class="service-item-desc">Elaboração e revisão de contratos de licenciamento, desenvolvimento, fornecimento, SLAs e utilização de softwares e plataformas digitais.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">02</div>
+                            <h4 class="service-item-title">Contratos de Desenvolvimento de Tecnologia</h4>
+                            <p class="service-item-desc">Estruturação jurídica de projetos de desenvolvimento de sistemas, aplicativos móveis, plataformas web e soluções customizadas.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">03</div>
+                            <h4 class="service-item-title">Contratos de Serviços de Tecnologia</h4>
+                            <p class="service-item-desc">Elaboração e revisão de contratos de TI, suporte técnico, manutenção preventiva, infraestrutura física, cloud computing e serviços em nuvem.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">04</div>
+                            <h4 class="service-item-title">Contratos com Startups e Empresas de Tecnologia</h4>
+                            <p class="service-item-desc">Assessoria jurídica na negociação e estruturação de parcerias comerciais, acordos de investimento e contratos estratégicos no ecossistema de inovação.</p>
+                        </div>
+                        <div class="service-item-card service-item-card-featured">
+                            <div class="service-bullet-num">05</div>
+                            <h4 class="service-item-title">Negociação e Gestão de Contratos de Tecnologia</h4>
+                            <p class="service-item-desc">Análise profunda de riscos, negociação direta de cláusulas limitativas de responsabilidade e apoio jurídico durante todo o ciclo de vida contratual.</p>
+                        </div>
+                    </div>
+                    <!-- Botão de expansão no Mobile (oculto no desktop) -->
+                    <div class="expand-services-wrapper">
+                        <button type="button" class="btn-expand-services" onclick="toggleExpandPanel(this)" aria-expanded="false">
+                            <span>Ver todos os serviços (+2)</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="specialty-panel-footer">
+                        <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20preciso%20de%20suporte%20em%20Contratos%20de%20Tecnologia." target="_blank" class="btn btn-whatsapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            Falar com a Dra. Alexia sobre Contratos Tech
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Card 4: Consultoria Empresarial Digital -->
-                <div class="area-card" id="card-consultoria">
-                    <span class="area-number" aria-hidden="true">04</span>
-                    <div class="area-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="7" width="20" height="14" rx="2"></rect>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                        </svg>
+                <!-- PAINEL 4: Propriedade Intelectual -->
+                <div class="specialty-panel" id="panel-pi" role="tabpanel" aria-labelledby="tab-pi">
+                    <div class="specialty-panel-header centered">
+                        <h3 class="panel-headline">Propriedade Intelectual no Ambiente Digital</h3>
+                        <p class="panel-subheadline">Blindagem e monetização segura de marcas, criações autorais, códigos e inovações.</p>
                     </div>
-                    <h3 class="area-title">Consultoria Empresarial Digital</h3>
-                    <p class="area-desc">Assessoria preventiva e estratégica para estruturar empresas do setor digital
-                        com governança sólida, reduzindo contingências e permitindo crescimento escalável.</p>
-                    <ul class="area-bullets">
-                        <li>Estruturação jurídica de startups, scale-ups e negócios digitais</li>
-                        <li>Compliance digital e governança de tecnologia corporativa</li>
-                        <li>Estratégia regulatória para lançamentos de novos produtos</li>
-                        <li>Assessoria contínua personalizada (modelo retainer jurídico)</li>
-                    </ul>
-                    <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20preciso%20de%20Consultoria%20Empresarial%20Digital."
-                        target="_blank" class="area-link" id="link-consultoria">
-                        Consultar especialidade
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
+                    <div class="services-subgrid">
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">01</div>
+                            <h4 class="service-item-title">Proteção de Marcas</h4>
+                            <p class="service-item-desc">Assessoria jurídica estratégica para proteção, registro, uso comercial e exploração de marcas e outros sinais distintivos.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">02</div>
+                            <h4 class="service-item-title">Direitos Autorais</h4>
+                            <p class="service-item-desc">Proteção e gestão jurídica de obras originais, conteúdos digitais, fotografias, vídeos, textos, infoprodutos e criações intelectuais.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">03</div>
+                            <h4 class="service-item-title">Contratos de Propriedade Intelectual</h4>
+                            <p class="service-item-desc">Elaboração e revisão minuciosa de contratos de licença de uso, cessão, transferência de tecnologia e autorização de exploração de direitos.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">04</div>
+                            <h4 class="service-item-title">Uso Indevido e Violação de Direitos</h4>
+                            <p class="service-item-desc">Atuação ágil e contundente em notificações e processos contra uso não autorizado de marcas, obras, identidades visuais e ativos intelectuais.</p>
+                        </div>
+                        <div class="service-item-card service-item-card-featured">
+                            <div class="service-bullet-num">05</div>
+                            <h4 class="service-item-title">Propriedade Intelectual em Negócios Digitais</h4>
+                            <p class="service-item-desc">Assessoria na proteção e exploração estratégica de ativos intangíveis em websites, plataformas digitais, aplicativos móveis e redes sociais.</p>
+                        </div>
+                    </div>
+                    <!-- Botão de expansão no Mobile (oculto no desktop) -->
+                    <div class="expand-services-wrapper">
+                        <button type="button" class="btn-expand-services" onclick="toggleExpandPanel(this)" aria-expanded="false">
+                            <span>Ver todos os serviços (+2)</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="specialty-panel-footer">
+                        <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20tenho%20interesse%20em%20Propriedade%20Intelectual." target="_blank" class="btn btn-whatsapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            Falar com a Dra. Alexia sobre Marcas & PI
+                        </a>
+                    </div>
                 </div>
+
+                <!-- PAINEL 5: Governança de Dados na Saúde -->
+                <div class="specialty-panel" id="panel-saude" role="tabpanel" aria-labelledby="tab-saude">
+                    <div class="specialty-panel-header centered">
+                        <h3 class="panel-headline">Governança de Dados na Saúde</h3>
+                        <p class="panel-subheadline">Governança de dados na relação médico-paciente: da coleta ao descarte, com segurança jurídica e respeito à dignidade do titular.</p>
+                    </div>
+                    <div class="services-subgrid">
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">01</div>
+                            <h4 class="service-item-title">Mapeamento de Fluxos Assistenciais</h4>
+                            <p class="service-item-desc">Mapeamento dos fluxos de dados pessoais, da coleta ao descarte, em processos assistenciais, clínicos e administrativos.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">02</div>
+                            <h4 class="service-item-title">Bases Legais de Dados Sensíveis</h4>
+                            <p class="service-item-desc">Definição e revisão criteriosa das bases legais aplicáveis ao tratamento de dados sensíveis de saúde conforme o art. 11 da LGPD.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">03</div>
+                            <h4 class="service-item-title">Estruturação de Consentimento</h4>
+                            <p class="service-item-desc">Estruturação jurídica e operacional de processos de consentimento inequívoco e informado, quando este for a base legal aplicável.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">04</div>
+                            <h4 class="service-item-title">Segurança em Prontuários Clínicos</h4>
+                            <p class="service-item-desc">Políticas de controle de acesso, confidencialidade médica e segurança da informação para prontuários físicos e sistemas eletrônicos (PEP).</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">05</div>
+                            <h4 class="service-item-title">Gestão de Terceiros e Operadores</h4>
+                            <p class="service-item-desc">Auditoria e contratos com laboratórios parceiros, convênios de saúde, fornecedores de software clínico e serviços de suporte.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">06</div>
+                            <h4 class="service-item-title">Políticas Internas de Proteção de Dados</h4>
+                            <p class="service-item-desc">Elaboração de políticas, manuais de conduta e procedimentos internos específicos para equipes de saúde e corpo de apoio.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">07</div>
+                            <h4 class="service-item-title">Atendimento aos Direitos dos Pacientes</h4>
+                            <p class="service-item-desc">Estruturação do canal ágil de atendimento às solicitações dos pacientes enquanto titulares de dados (acesso, correção, portabilidade).</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">08</div>
+                            <h4 class="service-item-title">Plano de Resposta a Incidentes na Saúde</h4>
+                            <p class="service-item-desc">Elaboração de plano de resposta e contenção de vazamentos em prontuários e bases clínicas, com mitigação de danos e reporte regulatório.</p>
+                        </div>
+                        <div class="service-item-card">
+                            <div class="service-bullet-num">09</div>
+                            <h4 class="service-item-title">Accountability da Instituição Médica</h4>
+                            <p class="service-item-desc">Apoio contínuo à governança e à comprovação documental de responsabilidade e boas práticas (accountability) da clínica ou hospital.</p>
+                        </div>
+                        <div class="service-item-card service-item-card-featured">
+                            <div class="service-bullet-num">10</div>
+                            <h4 class="service-item-title">Capacitação de Equipes Clínicas</h4>
+                            <p class="service-item-desc">Conscientização e treinamentos práticos para médicos, enfermeiros, recepcionistas e administradores sobre o sigilo e a privacidade dos pacientes.</p>
+                        </div>
+                    </div>
+                    <!-- Botão de expansão no Mobile (oculto no desktop) -->
+                    <div class="expand-services-wrapper">
+                        <button type="button" class="btn-expand-services" onclick="toggleExpandPanel(this)" aria-expanded="false">
+                            <span>Ver todos os serviços (+7)</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="specialty-panel-footer">
+                        <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20tenho%20interesse%20em%20Governan%C3%A7a%20de%20Dados%20na%20Sa%C3%BAde%20%28LGPD%20para%20Cl%C3%ADnicas%29." target="_blank" class="btn btn-whatsapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            Falar com a Dra. Alexia sobre Saúde & Clínicas
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -487,7 +698,7 @@
             <div class="section-header centered">
                 <span class="section-eyebrow">Ferramenta gratuita</span>
                 <h2 class="section-title">Diagnóstico de Conformidade Digital</h2>
-                <p class="section-desc">Responda 5 perguntas rápidas e descubra o nível de exposição jurídica e
+                <p class="section-desc">Responda 6 perguntas rápidas e descubra o nível de exposição jurídica e
                     regulatória da sua empresa no ambiente digital.</p>
             </div>
 
@@ -500,14 +711,40 @@
 
                     <!-- PERGUNTA 1 -->
                     <div class="quiz-step active" id="quiz-step-1">
-                        <div class="quiz-step-label">Pergunta 1 de 5</div>
-                        <p class="quiz-question">Sua empresa possui uma Política de Privacidade personalizada e
-                            atualizada conforme a LGPD?</p>
+                        <div class="quiz-step-label">Pergunta 1 de 6</div>
+                        <p class="quiz-question">Sua empresa sabe exatamente quais dados pessoais coleta, onde ficam armazenados e quem tem acesso a eles?</p>
                         <div class="quiz-options">
                             <label class="quiz-option" data-score="0">
                                 <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Sim, está publicada, personalizada e revisada
-                                    recentemente</span>
+                                <span class="quiz-option-text">Sim, temos um mapeamento completo e atualizado</span>
+                            </label>
+                            <label class="quiz-option" data-score="1">
+                                <span class="quiz-option-indicator"></span>
+                                <span class="quiz-option-text">Temos uma ideia geral, mas nada documentado</span>
+                            </label>
+                            <label class="quiz-option" data-score="2">
+                                <span class="quiz-option-indicator"></span>
+                                <span class="quiz-option-text">Só sabemos os dados mais óbvios (nome, e-mail, telefone)</span>
+                            </label>
+                            <label class="quiz-option" data-score="3">
+                                <span class="quiz-option-indicator"></span>
+                                <span class="quiz-option-text">Nunca mapeamos isso</span>
+                            </label>
+                        </div>
+                        <div class="quiz-nav">
+                            <span></span>
+                            <button class="btn btn-primary" onclick="quizNext(1)" id="quiz-btn-1">Próxima</button>
+                        </div>
+                    </div>
+
+                    <!-- PERGUNTA 2 -->
+                    <div class="quiz-step" id="quiz-step-2">
+                        <div class="quiz-step-label">Pergunta 2 de 6</div>
+                        <p class="quiz-question">Sua empresa possui uma Política de Privacidade personalizada e atualizada conforme a LGPD?</p>
+                        <div class="quiz-options">
+                            <label class="quiz-option" data-score="0">
+                                <span class="quiz-option-indicator"></span>
+                                <span class="quiz-option-text">Sim, está publicada, personalizada e revisada recentemente</span>
                             </label>
                             <label class="quiz-option" data-score="1">
                                 <span class="quiz-option-indicator"></span>
@@ -523,36 +760,6 @@
                             </label>
                         </div>
                         <div class="quiz-nav">
-                            <span></span>
-                            <button class="btn btn-primary" onclick="quizNext(1)" id="quiz-btn-1">Próxima</button>
-                        </div>
-                    </div>
-
-                    <!-- PERGUNTA 2 -->
-                    <div class="quiz-step" id="quiz-step-2">
-                        <div class="quiz-step-label">Pergunta 2 de 5</div>
-                        <p class="quiz-question">Seus contratos com fornecedores, ferramentas SaaS e parceiros regulam o
-                            tratamento de dados pessoais (DPA)?</p>
-                        <div class="quiz-options">
-                            <label class="quiz-option" data-score="0">
-                                <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Sim, todos possuem cláusulas de proteção e DPA
-                                    formalizado</span>
-                            </label>
-                            <label class="quiz-option" data-score="1">
-                                <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Apenas os contratos principais possuem cláusulas</span>
-                            </label>
-                            <label class="quiz-option" data-score="2">
-                                <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Não regulamos isso em contratos de fornecedores</span>
-                            </label>
-                            <label class="quiz-option" data-score="3">
-                                <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Não sabemos como funciona o DPA</span>
-                            </label>
-                        </div>
-                        <div class="quiz-nav">
                             <button class="quiz-btn-back" onclick="quizBack(2)">← Voltar</button>
                             <button class="btn btn-primary" onclick="quizNext(2)" id="quiz-btn-2">Próxima</button>
                         </div>
@@ -560,27 +767,24 @@
 
                     <!-- PERGUNTA 3 -->
                     <div class="quiz-step" id="quiz-step-3">
-                        <div class="quiz-step-label">Pergunta 3 de 5</div>
-                        <p class="quiz-question">Sua empresa possui plano de resposta para eventuais incidentes de
-                            segurança ou vazamento de dados?</p>
+                        <div class="quiz-step-label">Pergunta 3 de 6</div>
+                        <p class="quiz-question">Os contratos com fornecedores e parceiros que têm acesso a dados dos seus clientes preveem responsabilidades claras em caso de vazamento?</p>
                         <div class="quiz-options">
                             <label class="quiz-option" data-score="0">
                                 <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Sim, temos fluxo documentado e comitê de segurança</span>
+                                <span class="quiz-option-text">Sim, todos possuem cláusulas específicas de proteção de dados</span>
                             </label>
                             <label class="quiz-option" data-score="1">
                                 <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Temos medidas técnicas básicas, mas nada
-                                    formalizado</span>
+                                <span class="quiz-option-text">Apenas os contratos principais possuem essas cláusulas</span>
                             </label>
                             <label class="quiz-option" data-score="2">
                                 <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Não temos plano, se houver vazamento não saberemos como
-                                    agir</span>
+                                <span class="quiz-option-text">Não regulamos isso nos contratos com fornecedores</span>
                             </label>
                             <label class="quiz-option" data-score="3">
                                 <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Nunca estruturamos segurança da informação</span>
+                                <span class="quiz-option-text">Não sabemos se essa proteção existe</span>
                             </label>
                         </div>
                         <div class="quiz-nav">
@@ -591,14 +795,40 @@
 
                     <!-- PERGUNTA 4 -->
                     <div class="quiz-step" id="quiz-step-4">
-                        <div class="quiz-step-label">Pergunta 4 de 5</div>
-                        <p class="quiz-question">Seus contratos de prestação de serviços, SaaS ou termos de uso foram
-                            redigidos por especialista em Direito Digital?</p>
+                        <div class="quiz-step-label">Pergunta 4 de 6</div>
+                        <p class="quiz-question">Se houvesse um vazamento de dados hoje, sua empresa saberia o que fazer nas primeiras 24 horas?</p>
                         <div class="quiz-options">
                             <label class="quiz-option" data-score="0">
                                 <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Sim, foram elaborados sob medida e são revisados
-                                    periodicamente</span>
+                                <span class="quiz-option-text">Sim, temos um plano documentado e equipe responsável</span>
+                            </label>
+                            <label class="quiz-option" data-score="1">
+                                <span class="quiz-option-indicator"></span>
+                                <span class="quiz-option-text">Temos medidas técnicas básicas, mas nada formalizado</span>
+                            </label>
+                            <label class="quiz-option" data-score="2">
+                                <span class="quiz-option-indicator"></span>
+                                <span class="quiz-option-text">Não temos plano, agiríamos de improviso</span>
+                            </label>
+                            <label class="quiz-option" data-score="3">
+                                <span class="quiz-option-indicator"></span>
+                                <span class="quiz-option-text">Nunca pensamos sobre isso</span>
+                            </label>
+                        </div>
+                        <div class="quiz-nav">
+                            <button class="quiz-btn-back" onclick="quizBack(4)">← Voltar</button>
+                            <button class="btn btn-primary" onclick="quizNext(4)" id="quiz-btn-4">Próxima</button>
+                        </div>
+                    </div>
+
+                    <!-- PERGUNTA 5 -->
+                    <div class="quiz-step" id="quiz-step-5">
+                        <div class="quiz-step-label">Pergunta 5 de 6</div>
+                        <p class="quiz-question">Seus contratos de prestação de serviços e termos de uso foram redigidos por especialista em Direito Digital?</p>
+                        <div class="quiz-options">
+                            <label class="quiz-option" data-score="0">
+                                <span class="quiz-option-indicator"></span>
+                                <span class="quiz-option-text">Sim, foram elaborados sob medida e são revisados periodicamente</span>
                             </label>
                             <label class="quiz-option" data-score="1">
                                 <span class="quiz-option-indicator"></span>
@@ -614,26 +844,23 @@
                             </label>
                         </div>
                         <div class="quiz-nav">
-                            <button class="quiz-btn-back" onclick="quizBack(4)">← Voltar</button>
-                            <button class="btn btn-primary" onclick="quizNext(4)" id="quiz-btn-4">Próxima</button>
+                            <button class="quiz-btn-back" onclick="quizBack(5)">← Voltar</button>
+                            <button class="btn btn-primary" onclick="quizNext(5)" id="quiz-btn-5">Próxima</button>
                         </div>
                     </div>
 
-                    <!-- PERGUNTA 5 -->
-                    <div class="quiz-step" id="quiz-step-5">
-                        <div class="quiz-step-label">Pergunta 5 de 5</div>
-                        <p class="quiz-question">Sua empresa conta com assessoria jurídica contínua e especializada no
-                            ecossistema de tecnologia?</p>
+                    <!-- PERGUNTA 6 -->
+                    <div class="quiz-step" id="quiz-step-6">
+                        <div class="quiz-step-label">Pergunta 6 de 6</div>
+                        <p class="quiz-question">Sua empresa conta com assessoria jurídica contínua e especializada em tecnologia, ou só recorre a um advogado quando um problema já aconteceu?</p>
                         <div class="quiz-options">
                             <label class="quiz-option" data-score="0">
                                 <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Sim, temos assessoria jurídica especializada contínua
-                                    (retainer)</span>
+                                <span class="quiz-option-text">Temos assessoria jurídica especializada contínua</span>
                             </label>
                             <label class="quiz-option" data-score="1">
                                 <span class="quiz-option-indicator"></span>
-                                <span class="quiz-option-text">Consultamos advogados pontualmente apenas em
-                                    urgências</span>
+                                <span class="quiz-option-text">Consultamos advogados pontualmente apenas em urgências</span>
                             </label>
                             <label class="quiz-option" data-score="2">
                                 <span class="quiz-option-indicator"></span>
@@ -645,9 +872,8 @@
                             </label>
                         </div>
                         <div class="quiz-nav">
-                            <button class="quiz-btn-back" onclick="quizBack(5)">← Voltar</button>
-                            <button class="btn btn-primary" onclick="quizFinish()" id="quiz-btn-5">Ver meu
-                                resultado</button>
+                            <button class="quiz-btn-back" onclick="quizBack(6)">← Voltar</button>
+                            <button class="btn btn-primary" onclick="quizFinish()" id="quiz-btn-6">Ver meu resultado</button>
                         </div>
                     </div>
                 </div>
@@ -680,202 +906,230 @@
     </section>
 
     <!-- ================================================================
-         SOBRE — Biografia e Certificado Dale Carnegie Enquadrado
+         SOBRE — Biografia, Certificação Dale Carnegie e Selos EXIN
          ================================================================ -->
     <section id="sobre" class="about-section">
         <div class="container">
+            <!-- Cabeçalho Centralizado da Seção Sobre -->
+            <div class="section-header centered about-section-header">
+                <span class="section-eyebrow">A especialista</span>
+                <h2 class="section-title">Alexia Alencar Capibaribe</h2>
+                <p class="about-quote-centered">
+                    "O Direito deve ser um acelerador estratégico de negócios e inovação, nunca um obstáculo. Minha missão é entregar clareza jurídica e segurança para quem constrói o futuro."
+                </p>
+            </div>
+
+            <!-- Grid 2 Colunas: Lado Esquerdo Foto / Lado Direito Conteúdo -->
             <div class="about-grid">
-                <!-- Coluna de texto -->
-                <div class="about-text-col">
-                    <span class="section-eyebrow">A especialista</span>
-                    <h2 class="section-title">Alexia Alencar Capibaribe</h2>
 
-                    <p class="about-quote">
-                        "O Direito deve ser um acelerador estratégico de negócios e inovação, nunca um obstáculo. Minha
-                        missão é entregar clareza jurídica e segurança para quem constrói o futuro."
-                    </p>
-
-                    <p class="about-text">
-                        Inscrita na OAB/CE sob o nº <strong>45.061</strong>, Alexia Capibaribe atua na intersecção entre
-                        o direito corporativo, novas tecnologias e proteção de dados. Com atuação voltada para a
-                        dinâmica de empresas inovadoras e lideranças executivas, desenvolve soluções jurídicas que aliam
-                        rigor técnico à agilidade que o mercado digital exige.
-                    </p>
-
-                    <p class="about-text">
-                        Certificada internacionalmente pelo <strong>Dale Carnegie Course</strong> em liderança,
-                        comunicação estratégica e relações humanas de alto impacto, combina precisão regulatória com
-                        visão de negócios, descomplicando termos jurídicos para viabilizar decisões ágeis e seguras.
-                    </p>
-
-                    <div class="about-credentials">
+                <!-- LADO ESQUERDO: Foto + Selo OAB + Especialidades -->
+                <div class="about-photo-wrapper">
+                    <div class="about-photo-card">
+                        <img src="assets/certificado.jpg" alt="Dra. Alexia Capibaribe"
+                            class="about-photo-img">
+                        <!-- Badge OAB Flutuante sobre a foto -->
+                        <div class="about-oab-floating">
+                            <div class="oab-floating-icon">OAB</div>
+                            <div class="oab-floating-info">
+                                <span class="oab-floating-label">Inscrição Profissional</span>
+                                <strong class="oab-floating-num">OAB/CE 45.061</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Especialidades abaixo da foto -->
+                    <div class="about-credentials about-credentials-below">
                         <span class="credential-tag">Direito Digital</span>
                         <span class="credential-tag">LGPD & Privacidade</span>
-                        <span class="credential-tag">Contratos Tech & SaaS</span>
-                        <span class="credential-tag">Certificação Dale Carnegie</span>
-                        <span class="credential-tag">Governança & Compliance</span>
+                        <span class="credential-tag">Governança na Saúde</span>
+                        <span class="credential-tag">Contratos Tech</span>
+                        <span class="credential-tag">Dale Carnegie</span>
+                        <span class="credential-tag">Certificações EXIN</span>
                     </div>
+                </div>
 
-                    <div class="about-oab-badge">
-                        <div class="oab-icon">OAB</div>
-                        <div class="oab-details">
-                            <span class="oab-label">Inscrição Profissional</span>
-                            <span class="oab-number">OAB/CE 45.061</span>
+                <!-- LADO DIREITO: Biografia + Selos EXIN + Botão CTA -->
+                <div class="about-text-col">
+                    <p class="about-text">
+                        Inscrita na OAB/CE sob o nº <strong>45.061</strong>, Alexia Capibaribe atua na intersecção entre
+                        o direito corporativo, novas tecnologias, proteção de dados e governança de saúde. Com atuação
+                        voltada para a dinâmica de empresas inovadoras, clínicas e lideranças executivas, desenvolve soluções
+                        jurídicas que aliam rigor técnico à agilidade que o mercado digital exige.
+                    </p>
+
+                    <p class="about-text">
+                        Certificada internacionalmente pelo <strong>Dale Carnegie Course</strong> em liderança e comunicação de alto impacto, combina precisão regulatória com visão de negócios, descomplicando termos jurídicos para viabilizar decisões seguras e estratégicas.
+                    </p>
+
+                    <!-- Vitrine de Selos EXIN -->
+                    <div class="exin-certifications-block">
+                        <div class="exin-title-label">Certificações Internacionais EXIN</div>
+                        <div class="exin-badges-grid">
+                            <div class="exin-badge-card" title="EXIN BCS Artificial Intelligence Foundation">
+                                <img src="assets/selo-exin-ai.svg" alt="Selo EXIN BCS Artificial Intelligence Foundation" class="exin-badge-img">
+                                <div class="exin-badge-meta">
+                                    <span class="exin-badge-org">EXIN · BCS</span>
+                                    <span class="exin-badge-name">Artificial Intelligence</span>
+                                    <span class="exin-badge-level">Foundation</span>
+                                </div>
+                            </div>
+                            <div class="exin-badge-card" title="EXIN Information Security Management ISO/IEC 27001 Professional">
+                                <img src="assets/selo-exin-iso27001.svg" alt="Selo EXIN ISO/IEC 27001 Professional" class="exin-badge-img">
+                                <div class="exin-badge-meta">
+                                    <span class="exin-badge-org">EXIN</span>
+                                    <span class="exin-badge-name">ISO/IEC 27001 InfoSec</span>
+                                    <span class="exin-badge-level">Professional</span>
+                                </div>
+                            </div>
+                            <div class="exin-badge-card" title="EXIN Privacy & Data Protection Foundation">
+                                <img src="assets/selo-exin-pdpf.svg" alt="Selo EXIN Privacy and Data Protection Foundation" class="exin-badge-img">
+                                <div class="exin-badge-meta">
+                                    <span class="exin-badge-org">EXIN</span>
+                                    <span class="exin-badge-name">Privacy & Data Protection</span>
+                                    <span class="exin-badge-level">Foundation</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <a href="https://wa.me/5585996350989?text=Ol%C3%A1%20Dra.%20Alexia%2C%20gostaria%20de%20agendar%20uma%20conversa."
-                        target="_blank" class="btn btn-primary" id="about-cta">
+                        target="_blank" class="btn btn-primary btn-block" id="about-cta">
                         Agendar uma conversa
                     </a>
                 </div>
 
-                <!-- Coluna da foto / Certificado -->
-                <div class="about-photo-wrapper">
-                    <div class="about-photo-card">
-                        <img src="assets/certificado.jpg" alt="Dra. Alexia Capibaribe - Certificação Dale Carnegie"
-                            class="about-photo-img">
-                        <div class="about-photo-caption">
-                            <span class="about-caption-dot"></span>
-                            <div class="about-caption-text">
-                                <strong>Certificação Internacional Dale Carnegie</strong>
-                                <span>Liderança, Comunicação & Alta Performance</span>
-                            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         ARTIGOS & INSIGHTS JURÍDICOS (Substituindo FAQ)
+         ================================================================ -->
+    <section id="artigos">
+        <div class="container">
+            <!-- Cabeçalho Centralizado da Seção de Artigos -->
+            <div class="section-header centered articles-section-header">
+                <span class="section-eyebrow">Publicações & Análises</span>
+                <h2 class="section-title">Artigos & Insights Jurídicos</h2>
+                <p class="section-desc">Orientações práticas e estratégicas sobre Direito Digital, LGPD na Saúde, Inteligência Artificial e Contratos de Tecnologia.</p>
+            </div>
+
+            <!-- Barra de Controles do Carrossel de Artigos -->
+            <div class="articles-carousel-controls-bar">
+                <span class="articles-carousel-counter">Publicações Selecionadas</span>
+                <div class="articles-carousel-controls">
+                    <button class="carousel-nav-btn" id="articles-prev-btn" onclick="articlesPrev()" aria-label="Artigos anteriores" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-nav-btn" id="articles-next-btn" onclick="articlesNext()" aria-label="Próximos artigos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="articles-carousel-viewport" id="articles-viewport">
+                <div class="articles-carousel-track" id="articles-track">
+                    <!-- Artigo 1: IA -->
+                    <article class="article-card" onclick="openArticleModal('ai-risks')">
+                        <div class="article-card-header">
+                            <span class="article-badge">Inovação & IA</span>
+                            <span class="article-readtime">3 min de leitura</span>
                         </div>
-                    </div>
+                        <h3 class="article-title">Inteligência Artificial e Riscos Jurídicos: O que as Empresas Devem Blindar em 2026</h3>
+                        <p class="article-excerpt">A adoção massiva de ferramentas de IA generativa no ambiente corporativo exige governança sobre direitos autorais, vazamento de dados estratégicos e responsabilidade civil.</p>
+                        <div class="article-card-footer">
+                            <span class="article-action-link">
+                                Ler artigo completo
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Artigo 2: Saúde -->
+                    <article class="article-card article-card-highlight" onclick="openArticleModal('health-lgpd')">
+                        <div class="article-card-header">
+                            <span class="article-badge badge-health">Direito Médico & LGPD</span>
+                            <span class="article-readtime">4 min de leitura</span>
+                        </div>
+                        <h3 class="article-title">Governança de Dados na Saúde: Da Coleta ao Prontuário Eletrônico</h3>
+                        <p class="article-excerpt">Dados sensíveis de pacientes (art. 11 da LGPD) demandam protocolos rigorosos de controle de acesso, termos de consentimento válidos e conformidade técnica para clínicas.</p>
+                        <div class="article-card-footer">
+                            <span class="article-action-link">
+                                Ler artigo completo
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Artigo 3: Contratos SaaS -->
+                    <article class="article-card" onclick="openArticleModal('saas-contracts')">
+                        <div class="article-card-header">
+                            <span class="article-badge">Contratos Tech</span>
+                            <span class="article-readtime">3 min de leitura</span>
+                        </div>
+                        <h3 class="article-title">Contratos de Software & SaaS: Cláusulas Críticas de Limitação de Responsabilidade e SLA</h3>
+                        <p class="article-excerpt">Como redigir instrumentos contratuais robustos que protegem a propriedade intelectual do software e limitam passivos indenizatórios desproporcionais com clientes.</p>
+                        <div class="article-card-footer">
+                            <span class="article-action-link">
+                                Ler artigo completo
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Artigo 4: Vazamento de Dados -->
+                    <article class="article-card" onclick="openArticleModal('data-breach')">
+                        <div class="article-card-header">
+                            <span class="article-badge">Segurança & LGPD</span>
+                            <span class="article-readtime">4 min de leitura</span>
+                        </div>
+                        <h3 class="article-title">Vazamento de Dados e as Primeiras 24 Horas: O Roteiro Decisivo perante a ANPD</h3>
+                        <p class="article-excerpt">Em incidentes com dados pessoais, a velocidade e a precisão do plano de resposta determinam a gravidade das sanções e a preservação da imagem corporativa.</p>
+                        <div class="article-card-footer">
+                            <span class="article-action-link">
+                                Ler artigo completo
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================================================================
-         FAQ — Dúvidas frequentes sobre Direito Digital
+         MODAL DE LEITURA IMERSIVA DE ARTIGOS
          ================================================================ -->
-    <section id="faq" class="alt-bg">
-        <div class="container">
-            <div class="section-header centered">
-                <span class="section-eyebrow">Dúvidas frequentes</span>
-                <h2 class="section-title">Perguntas sobre Direito Digital</h2>
-                <p class="section-desc">Respostas objetivas para as dúvidas mais comuns de empresas e executivos sobre
-                    LGPD, contratos de tecnologia e conformidade regulatória.</p>
+    <div id="article-modal" class="article-modal-overlay" onclick="closeArticleModal(event)" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="article-modal-container" onclick="event.stopPropagation()">
+            <button class="article-modal-close" onclick="closeArticleModal()" aria-label="Fechar artigo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="article-modal-scroll" id="article-modal-content">
+                <!-- Conteúdo injetado dinamicamente via JS -->
             </div>
-
-            <ul class="faq-list" id="faq-list">
-
-                <li class="faq-item" id="faq-1">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        A LGPD se aplica à minha empresa mesmo sendo de pequeno ou médio porte?
-                        <span class="faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            <p>Sim. A LGPD aplica-se a qualquer pessoa física ou jurídica que realize tratamento de
-                                dados pessoais com fins econômicos, independentemente do porte ou faturamento. Toda
-                                empresa que coleta leads, cadastra clientes, emite notas ou gerencia funcionários lida
-                                com dados pessoais e deve manter governança adequada para evitar notificações e sanções
-                                da ANPD.</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="faq-item" id="faq-2">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        O que é um DPA (Data Processing Agreement) e por que minha empresa precisa dele?
-                        <span class="faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            <p>O DPA é o instrumento contratual que disciplina o tratamento de dados pessoais entre o
-                                controlador (sua empresa) e os operadores (provedores de nuvem, CRMs, plataformas SaaS e
-                                terceiros). Ele delimita responsabilidades, exige padrões de segurança e protege seu
-                                negócio em caso de vazamento ou incidente por parte de parceiros.</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="faq-item" id="faq-3">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        Quais riscos uma empresa de tecnologia corre ao usar contratos genéricos?
-                        <span class="faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            <p>Minutas genéricas deixam brechas críticas em relação à titularidade do código-fonte
-                                (propriedade intelectual), níveis de serviço (SLA), limitação de responsabilidade civil
-                                e confidencialidade. Um contrato tech sob medida protege o valuation da sua empresa e
-                                evita litígios de alto custo financeiro e reputacional.</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="faq-item" id="faq-4">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        Como funciona o modelo de assessoria jurídica contínua (Retainer)?
-                        <span class="faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            <p>No modelo de assessoria contínua, sua empresa conta com suporte jurídica prioritário e
-                                recorrente. Isso inclui revisão ágil de contratos antes do fechamento de negócios,
-                                adequação contínua de políticas, consultas estratégicas e orientação preventiva sem a
-                                necessidade de manter um departamento jurídico interno de alto custo.</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="faq-item" id="faq-5">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        O que deve ser considerado juridicamente antes de lançar um software ou produto digital?
-                        <span class="faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            <p>É fundamental estruturar os Termos de Uso, Política de Privacidade e consentimentos
-                                (Privacy by Design), além de proteger a marca no INPI e blindar a propriedade
-                                intelectual do software. Essa base previne autuações de órgãos de defesa do consumidor,
-                                mitiga riscos regulatórios e valoriza o produto perante investidores.</p>
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================
          FOOTER
@@ -925,21 +1179,22 @@
                 <div>
                     <h4 class="footer-col-title">Especialidades</h4>
                     <ul class="footer-links">
-                        <li><a href="#atuacao">Direito Digital</a></li>
-                        <li><a href="#atuacao">LGPD & Proteção de Dados</a></li>
-                        <li><a href="#atuacao">Contratos de Tecnologia</a></li>
-                        <li><a href="#atuacao">Consultoria Empresarial Digital</a></li>
+                        <li><a href="#atuacao" onclick="switchSpecialtyTab('digital')">Direito Digital</a></li>
+                        <li><a href="#atuacao" onclick="switchSpecialtyTab('lgpd')">LGPD & Proteção de Dados</a></li>
+                        <li><a href="#atuacao" onclick="switchSpecialtyTab('contratos')">Contratos de Tecnologia</a></li>
+                        <li><a href="#atuacao" onclick="switchSpecialtyTab('pi')">Propriedade Intelectual</a></li>
+                        <li><a href="#atuacao" onclick="switchSpecialtyTab('saude')">Governança na Saúde (Clínicas)</a></li>
                     </ul>
                 </div>
 
                 <!-- Coluna de contato -->
                 <div>
-                    <h4 class="footer-col-title">Contato</h4>
+                    <h4 class="footer-col-title">Contato & Navegação</h4>
                     <ul class="footer-links">
                         <li><a href="https://wa.me/5585996350989" target="_blank">(85) 99635-0989</a></li>
                         <li><a href="mailto:contato@alexiacapibaribe.adv.br">contato@alexiacapibaribe.adv.br</a></li>
                         <li><a href="#diagnostico">Diagnóstico de Risco</a></li>
-                        <li><a href="#faq">Dúvidas Frequentes</a></li>
+                        <li><a href="#artigos">Artigos & Insights</a></li>
                     </ul>
                 </div>
             </div>

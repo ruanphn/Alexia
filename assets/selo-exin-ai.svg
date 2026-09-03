@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="200" height="240" fill="none">
+  <!-- Sombra / Glow sutil -->
+  <defs>
+    <filter id="badgeShadowAI" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0c2340" flood-opacity="0.25"/>
+    </filter>
+    <linearGradient id="shieldGradAI" x1="20" y1="10" x2="180" y2="230" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="borderGradAI" x1="0" y1="0" x2="200" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0f3460"/>
+    </linearGradient>
+    <linearGradient id="bannerGradAI" x1="20" y1="140" x2="180" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+    <linearGradient id="bottomGradAI" x1="20" y1="170" x2="180" y2="225" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#075985"/>
+      <stop offset="100%" stop-color="#082f49"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Corpo do Escudo -->
+  <path d="M 100 8 C 155 8 185 18 185 45 C 185 140 145 195 100 230 C 55 195 15 140 15 45 C 15 18 45 8 100 8 Z" 
+        fill="url(#shieldGradAI)" stroke="#e2e8f0" stroke-width="4" filter="url(#badgeShadowAI)"/>
+  
+  <path d="M 100 12 C 150 12 178 22 178 47 C 178 135 140 188 100 222 C 60 188 22 135 22 47 C 22 22 50 12 100 12 Z" 
+        stroke="url(#borderGradAI)" stroke-width="3" fill="none"/>
+
+  <!-- Logo/Texto Superior EXIN BCS -->
+  <text x="100" y="44" font-family="'Jost', 'Segoe UI', sans-serif" font-size="14" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="1.5">EXIN · BCS</text>
+  
+  <line x1="45" y1="52" x2="155" y2="52" stroke="#cbd5e1" stroke-width="1"/>
+
+  <!-- Título da Certificação -->
+  <text x="100" y="75" font-family="'Jost', 'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#0369a1" text-anchor="middle">Artificial Intelligence</text>
+  <text x="100" y="93" font-family="'Jost', 'Segoe UI', sans-serif" font-size="10.5" font-weight="600" fill="#475569" text-anchor="middle">BCS Foundation</text>
+
+  <!-- Ícone estilizado de IA / Rede Neural -->
+  <g transform="translate(85, 102) scale(0.65)" stroke="#0284c7" stroke-width="2" fill="#e0f2fe">
+    <circle cx="23" cy="6" r="5" />
+    <circle cx="6" cy="30" r="5" />
+    <circle cx="40" cy="30" r="5" />
+    <line x1="23" y1="6" x2="6" y2="30" />
+    <line x1="23" y1="6" x2="40" y2="30" />
+    <line x1="6" y1="30" x2="40" y2="30" />
+  </g>
+
+  <!-- Faixa Nível FOUNDATION -->
+  <path d="M 23 138 Q 100 144 177 138 L 177 168 Q 100 174 23 168 Z" fill="url(#bannerGradAI)"/>
+  <text x="100" y="157" font-family="'Jost', 'Segoe UI', sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="2">FOUNDATION</text>
+
+  <!-- Base: Certified by EXIN -->
+  <path d="M 23 168 Q 100 174 177 168 C 165 200 135 218 100 223 C 65 218 35 200 23 168 Z" fill="url(#bottomGradAI)"/>
+  <text x="100" y="188" font-family="'Jost', 'Segoe UI', sans-serif" font-size="9" font-weight="600" fill="#bae6fd" text-anchor="middle" letter-spacing="1">Certified by</text>
+  <text x="100" y="206" font-family="'Jost', 'Segoe UI', sans-serif" font-size="14" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">EXIN</text>
+</svg>
