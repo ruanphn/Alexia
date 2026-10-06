@@ -80,9 +80,12 @@ Implementação de **sistema de abas interativas** elegantes em substituição a
 
 ```
 SITE-ALEXIA/
-├── index.html          # Estrutura semântica e dados oficiais da Dra. Alexia
-├── style.css           # Design system Navy/Prata/Papel + abas + modal + responsividade
-├── script.js           # Lógica do preloader, abas, quiz 6 etapas, leitor modal e WhatsApp
+├── index.html          # Landing page boutique com SEO, Diagnóstico 7 etapas e Cookie Banner LGPD
+├── admin.html          # Portal Administrativo executivo para gestão de Leads e Artigos
+├── style.css           # Design system Navy/Prata/Papel + formulários + modais + responsividade
+├── script.js           # Lógica do preloader, abas, quiz 7 etapas, leitor de artigos, lead gate e cookies LGPD
+├── robots.txt          # Diretivas de rastreamento com proteção para /admin.html
+├── sitemap.xml         # Mapa do site para indexação do Google
 ├── MEMORIA.md          # Este memorial oficial atualizado
 └── assets/
     ├── Identidade Visual - Alexia Capibaribe (1).png  # Manual de marca
@@ -95,9 +98,21 @@ SITE-ALEXIA/
 
 ---
 
-## 🛠️ Próximos Passos
+## 🚀 Novas Atualizações & Arquitetura (v4.2 — Implementada)
 
-1.  **Ajuste Fino do Texto Sobre:** Dra. Alexia definirá o complemento final da frase *"Minha missão é entregar clareza jurídica e segurança para..."*.
-2.  **Publicação Web:** Realizar deploy em plataforma de hospedagem estática (Vercel, Netlify ou GitHub Pages).
-3.  **Configuração de Domínio:** Apontar o domínio personalizado (ex: `alexiacapibaribe.adv.br`).
-4.  **Analytics:** Inserir tag de mensuração (Google Analytics 4 ou Meta Pixel) para acompanhar acessos e conversões do quiz, modal de artigos e WhatsApp.
+### 1. Conformidade LGPD Rigorosa (Cookie Banner & Central de Privacidade)
+*   **Aviso Transparente:** Banner fixo na base com design executivo, fundamentação legal na LGPD (Lei nº 13.709/2018) e paridade de botões (*Aceitar Todos*, *Rejeitar Não Essenciais*, *Preferências*).
+*   **Modal de Preferências Granulares:** Divisão em três categorias (*Necessários*, *Analíticos & Estatísticos*, *Atendimento & Comunicação*) com controle por switches acessíveis.
+*   **Gestão de Autonomia do Usuário:** Armazenamento em `localStorage` e botão flutuante permanente no canto inferior esquerdo para alteração ou revogação a qualquer momento.
+
+### 2. Diagnóstico & Captura de Leads (Inbound Gate Integrado)
+*   **Etapa 7 de Identificação Corporativa:** Adição de formulário com Nome Completo, E-mail Corporativo, WhatsApp com máscara automática `(85) 9XXXX-XXXX`, Empresa, Perfil e Checkbox de consentimento da LGPD.
+*   **Gravação de Respostas Detalhadas:** Cada pergunta assinalada (1 a 6) é gravada junto com os dados cadastrais do lead, permitindo auditoria completa antes do primeiro contato.
+*   **Resultado e WhatsApp Dinâmico:** Geração do score (0 a 100), classificação de risco (Alto, Moderado, Baixo) e link de WhatsApp já configurado com o nome do cliente e da empresa.
+
+### 3. Portal Administrativo Executivo (`admin.html`)
+*   **Acesso Seguro:** Tela de login corporativa com chave de acesso master (`alexia2026`).
+*   **Métricas em Tempo Real:** Total de leads, urgências de Risco Alto, Risco Moderado e Risco Baixo.
+*   **Raio-X do Lead:** Modal interativo para a Dra. Alexia consultar exatamente o que a empresa respondeu sobre mapeamento, políticas, contratos, incidentes e suporte jurídico.
+*   **Ações Rápidas:** Botão para iniciar conversa no WhatsApp em 1 clique chamando o lead pelo nome, e exportação completa da base em planilha CSV (Excel).
+*   **Gestão de Artigos:** Aba visual para consulta dos artigos publicados no blog.

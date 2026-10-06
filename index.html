@@ -6,23 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Alexia Capibaribe (OAB/CE 45.061) — Advocacia boutique especializada em Direito Digital, LGPD, Contratos de Tecnologia e Consultoria Empresarial para empresas e executivos.">
+        content="Alexia Capibaribe (OAB/CE 45.061) — Advocacia boutique especializada em Direito Digital, LGPD, Governança na Saúde e Contratos de Tecnologia para empresas e executivos.">
     <meta name="keywords"
-        content="advogada direito digital, alexia capibaribe, oab ce 45061, lgpd fortaleza, contratos tecnologia, consultoria empresarial digital, conformidade digital, proteção de dados">
+        content="advogada direito digital, alexia capibaribe, oab ce 45061, lgpd fortaleza, lgpd saude clinicas, contratos tecnologia saas, governanca de dados saude, protecao de dados">
     <meta name="author" content="Alexia Alencar Capibaribe">
+    <meta name="theme-color" content="#19315f">
+    <link rel="canonical" href="https://alexiacapibaribe.adv.br">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Alexia Capibaribe | Advogada — Direito Digital">
+    <!-- Favicon AC Monograma em SVG -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='24' fill='%2319315f'/%3E%3Cline x1='42' y1='88' x2='60' y2='32' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='60' y1='32' x2='78' y2='88' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='50' y1='64' x2='70' y2='64' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M 82 50 A 22 28 0 1 0 82 70' stroke='%239ea4b4' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:site_name" content="Alexia Capibaribe Advocacia">
+    <meta property="og:title" content="Alexia Capibaribe | Advogada — Direito Digital & Proteção de Dados">
     <meta property="og:description"
         content="Advocacia boutique para empresas e executivos que operam na fronteira entre inovação e conformidade. OAB/CE 45.061.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alexiacapibaribe.adv.br">
-    <meta property="og:image" content="assets/alexia.PNG">
+    <meta property="og:image" content="assets/alexia2.jpg">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alexia Capibaribe | Advogada — Direito Digital & Proteção de Dados">
+    <meta name="twitter:description"
+        content="Advocacia boutique para empresas e executivos que operam na fronteira entre inovação e conformidade. OAB/CE 45.061.">
+    <meta name="twitter:image" content="assets/alexia2.jpg">
 
     <title>Alexia Capibaribe | Direito Digital · Tecnologia · Dados · Negócios</title>
 
     <!-- Design System -->
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=3.1">
 
     <!-- Schema Markup: LegalService para SEO Local & Corporativo -->
     <script type="application/ld+json">
@@ -873,13 +887,76 @@
                         </div>
                         <div class="quiz-nav">
                             <button class="quiz-btn-back" onclick="quizBack(6)">← Voltar</button>
-                            <button class="btn btn-primary" onclick="quizFinish()" id="quiz-btn-6">Ver meu resultado</button>
+                            <button class="btn btn-primary" onclick="quizNext(6)" id="quiz-btn-6">Avançar para o Relatório</button>
+                        </div>
+                    </div>
+
+                    <!-- ETAPA 7: CAPTURA DO LEAD & EMISSÃO DO RELATÓRIO -->
+                    <div class="quiz-step" id="quiz-step-7">
+                        <div class="quiz-step-label">Etapa Final · Relatório Executivo</div>
+                        <p class="quiz-question">Onde devemos entregar seu Diagnóstico de Conformidade?</p>
+                        <p class="quiz-lead-intro">
+                            Preencha as informações da sua empresa para calcularmos a matriz de risco e gerarmos o relatório com orientações jurídicas personalizadas.
+                        </p>
+
+                        <div class="quiz-lead-form">
+                            <div class="quiz-lead-grid">
+                                <div class="form-group">
+                                    <label for="lead-nome">Seu Nome Completo <span class="required">*</span></label>
+                                    <input type="text" id="lead-nome" class="quiz-input" placeholder="Ex: Dr. Roberto Mendes" required autocomplete="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lead-whatsapp">WhatsApp com DDD <span class="required">*</span></label>
+                                    <input type="tel" id="lead-whatsapp" class="quiz-input" placeholder="(85) 99999-9999" maxlength="15" required autocomplete="tel" oninput="maskPhone(this)">
+                                </div>
+                            </div>
+
+                            <div class="quiz-lead-grid">
+                                <div class="form-group">
+                                    <label for="lead-email">E-mail Corporativo <span class="required">*</span></label>
+                                    <input type="email" id="lead-email" class="quiz-input" placeholder="roberto@empresa.com.br" required autocomplete="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lead-empresa">Nome da Empresa ou Clínica <span class="required">*</span></label>
+                                    <input type="text" id="lead-empresa" class="quiz-input" placeholder="Ex: Vitalis Saúde / Tech Solutions" required autocomplete="organization">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lead-cargo">Segmento ou Perfil da Empresa</label>
+                                <select id="lead-cargo" class="quiz-input quiz-select">
+                                    <option value="" disabled selected>Selecione o perfil da sua empresa</option>
+                                    <option value="Clínica Médica / Estabelecimento de Saúde">Clínica Médica / Estabelecimento de Saúde</option>
+                                    <option value="Startup / Empresa de Tecnologia / SaaS">Startup / Empresa de Tecnologia / SaaS</option>
+                                    <option value="Pequena / Média Empresa">Pequena / Média Empresa</option>
+                                    <option value="Varejo / E-commerce / Serviços">Varejo / E-commerce / Serviços</option>
+                                    <option value="Diretoria / Executivo / Outro">Diretoria / Executivo / Outro</option>
+                                </select>
+                            </div>
+
+                            <div class="quiz-lgpd-consent-box">
+                                <label class="quiz-checkbox-label">
+                                    <input type="checkbox" id="lead-lgpd-consent" checked>
+                                    <span class="quiz-checkbox-custom"></span>
+                                    <span class="quiz-checkbox-text">
+                                        Concordo com o tratamento dos dados informados para fins de cálculo deste diagnóstico e recebimento de contato profissional da Dra. Alexia Capibaribe, em conformidade com a LGPD (Lei nº 13.709/2018).
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-nav">
+                            <button class="quiz-btn-back" onclick="quizBack(7)">← Voltar</button>
+                            <button class="btn btn-primary" onclick="quizSubmitLead()" id="quiz-btn-submit">
+                                Gerar Meu Relatório de Riscos
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- RESULTADO DO QUIZ -->
                 <div class="quiz-result" id="quiz-result">
+                    <div class="quiz-result-lead-badge" id="quiz-result-lead-badge"></div>
                     <div class="quiz-result-score">
                         <span id="quiz-score-value">—</span>
                         <span>pontos</span>
@@ -892,10 +969,10 @@
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
                                 <path
-                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
                                 </path>
                             </svg>
-                            Falar com a Dra. Alexia
+                            Falar com a Dra. Alexia sobre o Relatório
                         </a>
                         <button class="btn btn-outline" onclick="quizReset()" id="quiz-reset-btn">Refazer
                             diagnóstico</button>
@@ -957,7 +1034,11 @@
                     </p>
 
                     <p class="about-text">
-                        Certificada internacionalmente pelo <strong>Dale Carnegie Course</strong> em liderança e comunicação de alto impacto, combina precisão regulatória com visão de negócios, descomplicando termos jurídicos para viabilizar decisões seguras e estratégicas.
+                        Auxiliamos empresas a transformar obrigação legal em vantagem competitiva. Ao longo da carreira, conduzimos a adequação à LGPD de mais de 20 empresas — de instituições de saúde a grandes varejistas — e ministramos treinamentos para centenas de colaboradores em privacidade, proteção de dados e inteligência artificial.
+                    </p>
+
+                    <p class="about-text">
+                        Atuamos na interseção entre Direito, Tecnologia e Estratégia: da governança de dados ao contencioso digital, do mapeamento de fluxos ao treinamento de equipes. Certificada EXIN em Privacidade (PDPF), IA Foundation e ISO/IEC 27001.
                     </p>
 
                     <!-- Vitrine de Selos EXIN -->
@@ -1002,14 +1083,14 @@
     </section>
 
     <!-- ================================================================
-         ARTIGOS & INSIGHTS JURÍDICOS (Substituindo FAQ)
+         ARTIGOS JURÍDICOS (Substituindo FAQ)
          ================================================================ -->
     <section id="artigos">
         <div class="container">
             <!-- Cabeçalho Centralizado da Seção de Artigos -->
             <div class="section-header centered articles-section-header">
                 <span class="section-eyebrow">Publicações & Análises</span>
-                <h2 class="section-title">Artigos & Insights Jurídicos</h2>
+                <h2 class="section-title">Artigos Jurídicos</h2>
                 <p class="section-desc">Orientações práticas e estratégicas sobre Direito Digital, LGPD na Saúde, Inteligência Artificial e Contratos de Tecnologia.</p>
             </div>
 
@@ -1194,7 +1275,8 @@
                         <li><a href="https://wa.me/5585996350989" target="_blank">(85) 99635-0989</a></li>
                         <li><a href="mailto:contato@alexiacapibaribe.adv.br">contato@alexiacapibaribe.adv.br</a></li>
                         <li><a href="#diagnostico">Diagnóstico de Risco</a></li>
-                        <li><a href="#artigos">Artigos & Insights</a></li>
+                        <li><a href="#artigos">Artigos Jurídicos</a></li>
+                        <li><a href="#" onclick="openCookieModal(event)">Preferências de Cookies</a></li>
                     </ul>
                 </div>
             </div>
@@ -1273,8 +1355,120 @@
         </button>
     </div>
 
+    <!-- ================================================================
+         CONFORMIDADE LGPD — BANNER E MODAL DE COOKIES
+         ================================================================ -->
+    <!-- Banner de Cookies Fixo na Base -->
+    <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Consentimento de Cookies">
+        <div class="cookie-banner-inner">
+            <div class="cookie-banner-content">
+                <div class="cookie-banner-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <div class="cookie-banner-text">
+                    <h4 class="cookie-banner-title">Privacidade & Gestão de Cookies</h4>
+                    <p class="cookie-banner-desc">
+                        Utilizamos cookies e tecnologias similares para garantir o funcionamento seguro deste site, analisar métricas de navegação e viabilizar canais de atendimento, em estrita observância à Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018). Você possui total autonomia para personalizar suas escolhas.
+                    </p>
+                </div>
+            </div>
+            <div class="cookie-banner-actions">
+                <button class="btn btn-outline cookie-btn" onclick="rejectOptionalCookies()">Rejeitar não essenciais</button>
+                <button class="btn btn-ghost cookie-btn" onclick="openCookieModal()">Preferências</button>
+                <button class="btn btn-primary cookie-btn" onclick="acceptAllCookies()">Aceitar todos</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Preferências Granulares de Cookies -->
+    <div id="cookie-modal" class="cookie-modal-overlay" onclick="closeCookieModal(event)" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cookie-modal-box" onclick="event.stopPropagation()">
+            <div class="cookie-modal-header">
+                <div>
+                    <h3 class="cookie-modal-title">Central de Preferências de Privacidade</h3>
+                    <span class="cookie-modal-subtitle">Controladora: Dra. Alexia Alencar Capibaribe · OAB/CE 45.061</span>
+                </div>
+                <button class="cookie-modal-close" onclick="closeCookieModal()" aria-label="Fechar modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="cookie-modal-body">
+                <p class="cookie-modal-intro">
+                    A autodeterminação informativa é um princípio basilar da LGPD. Abaixo, consulte as finalidades de cada categoria de cookies e gerencie suas permissões. Cookies estritamente necessários não podem ser desativados pois sustentam a segurança e funcionalidades essenciais da aplicação.
+                </p>
+
+                <!-- Categoria 1: Necessários -->
+                <div class="cookie-category-card">
+                    <div class="cookie-cat-header">
+                        <div class="cookie-cat-title-block">
+                            <h4>Cookies Estritamente Necessários</h4>
+                            <span class="cookie-badge-always">Sempre Ativos</span>
+                        </div>
+                    </div>
+                    <p class="cookie-cat-desc">
+                        Indispensáveis para autenticação, segurança do servidor contra requisições maliciosas e armazenamento seguro das suas próprias preferências de privacidade.
+                    </p>
+                </div>
+
+                <!-- Categoria 2: Analíticos -->
+                <div class="cookie-category-card">
+                    <div class="cookie-cat-header">
+                        <div class="cookie-cat-title-block">
+                            <h4>Cookies Analíticos & Estatísticos</h4>
+                            <label class="cookie-switch">
+                                <input type="checkbox" id="cookie-toggle-analytics">
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="cookie-cat-desc">
+                        Coletam métricas de audiência de forma anonimizada para aferir desempenho, tempos de carregamento e engajamento com os artigos jurídicos publicados.
+                    </p>
+                </div>
+
+                <!-- Categoria 3: Atendimento e Comunicação -->
+                <div class="cookie-category-card">
+                    <div class="cookie-cat-header">
+                        <div class="cookie-cat-title-block">
+                            <h4>Cookies de Atendimento & Comunicação</h4>
+                            <label class="cookie-switch">
+                                <input type="checkbox" id="cookie-toggle-marketing">
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="cookie-cat-desc">
+                        Permitem a integração com canais interativos de suporte via WhatsApp e rastreamento de conversão em campanhas informativas do escritório.
+                    </p>
+                </div>
+            </div>
+
+            <div class="cookie-modal-footer">
+                <button class="btn btn-outline" onclick="rejectOptionalCookies()">Rejeitar Não Essenciais</button>
+                <button class="btn btn-primary" onclick="saveCookiePreferences()">Salvar Minhas Escolhas</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Flutuante Permanente para Revogação/Alteração -->
+    <button id="cookie-reopen-btn" class="cookie-reopen-btn" onclick="openCookieModal()" title="Gerenciar Preferências de Cookies" aria-label="Gerenciar Preferências de Cookies">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>Privacidade</span>
+    </button>
+
     <!-- Scripts -->
-    <script src="script.js?v=3.0"></script>
+    <script src="script.js?v=3.1"></script>
 </body>
 
 </html>

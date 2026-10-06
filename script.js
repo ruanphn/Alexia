@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initArticleModal();
     initArticlesCarousel();
     initWhatsappWidget();
+    initCookieConsent();
 });
 
 
@@ -163,21 +164,46 @@ function toggleExpandPanel(btn) {
 
 
 /* ==========================================================================
-   4. DIAGNÓSTICO DE CONFORMIDADE DIGITAL — QUIZ LGPD (6 ETAPAS)
+   4. DIAGNÓSTICO DE CONFORMIDADE DIGITAL — QUIZ LGPD (7 ETAPAS)
    ========================================================================== */
-const QUIZ_TOTAL_STEPS = 6;
-let quizAnswers = {};   // { step: score }
+const QUIZ_TOTAL_STEPS = 7;
+let quizAnswers = {};          // { step: score }
+let quizAnswersDetails = {};   // { step: { question, answerText, score } }
 let quizCurrentStep = 1;
+
+// Máscara de telefone/WhatsApp: (XX) XXXXX-XXXX
+function maskPhone(input) {
+    let v = input.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.substring(0, 11);
+    if (v.length > 10) {
+        v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+    } else if (v.length > 6) {
+        v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, '($1) $2-$3');
+    } else if (v.length > 2) {
+        v = v.replace(/^(\d{2})(\d{0,5})$/, '($1) $2');
+    }
+    input.value = v;
+}
 
 function initQuiz() {
     document.querySelectorAll('.quiz-option').forEach(option => {
         option.addEventListener('click', () => {
-            const step = option.closest('.quiz-step').id.replace('quiz-step-', '');
-            option.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(o => {
-                o.classList.remove('selected');
-            });
+            const stepEl = option.closest('.quiz-step');
+            const step = stepEl.id.replace('quiz-step-', '');
+            stepEl.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
             option.classList.add('selected');
-            quizAnswers[step] = parseInt(option.dataset.score, 10);
+
+            const score = parseInt(option.dataset.score, 10);
+            const questionText = stepEl.querySelector('.quiz-question')?.textContent || '';
+            const answerText = option.querySelector('.quiz-option-text')?.textContent || '';
+
+            quizAnswers[step] = score;
+            quizAnswersDetails[step] = {
+                step: parseInt(step, 10),
+                question: questionText,
+                answer: answerText,
+                score: score
+            };
         });
     });
 
@@ -185,7 +211,7 @@ function initQuiz() {
 }
 
 function quizNext(step) {
-    if (quizAnswers[step] === undefined) {
+    if (step <= 6 && quizAnswers[step] === undefined) {
         shakeQuizBtn(step);
         return;
     }
@@ -212,56 +238,171 @@ function quizBack(step) {
     updateProgressBar();
 }
 
-function quizFinish() {
-    if (quizAnswers[QUIZ_TOTAL_STEPS] === undefined) {
-        shakeQuizBtn(QUIZ_TOTAL_STEPS);
+// Submissão da etapa 7 (Lead Capture Gate)
+function quizSubmitLead() {
+    const nomeEl      = document.getElementById('lead-nome');
+    const whatsappEl  = document.getElementById('lead-whatsapp');
+    const emailEl     = document.getElementById('lead-email');
+    const empresaEl   = document.getElementById('lead-empresa');
+    const cargoEl     = document.getElementById('lead-cargo');
+    const consentEl   = document.getElementById('lead-lgpd-consent');
+    const submitBtn   = document.getElementById('quiz-btn-submit');
+
+    // Remove erros anteriores
+    [nomeEl, whatsappEl, emailEl, empresaEl].forEach(el => el && el.classList.remove('input-error'));
+
+    const nome = nomeEl ? nomeEl.value.trim() : '';
+    const whatsapp = whatsappEl ? whatsappEl.value.trim() : '';
+    const email = emailEl ? emailEl.value.trim() : '';
+    const empresa = empresaEl ? empresaEl.value.trim() : '';
+    const cargo = cargoEl ? cargoEl.value : '';
+    const consent = consentEl ? consentEl.checked : false;
+
+    let hasError = false;
+
+    if (!nome || nome.length < 3) {
+        nomeEl.classList.add('input-error');
+        hasError = true;
+    }
+
+    const rawPhone = whatsapp.replace(/\D/g, '');
+    if (!whatsapp || rawPhone.length < 10) {
+        whatsappEl.classList.add('input-error');
+        hasError = true;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+        emailEl.classList.add('input-error');
+        hasError = true;
+    }
+
+    if (!empresa || empresa.length < 2) {
+        empresaEl.classList.add('input-error');
+        hasError = true;
+    }
+
+    if (!consent) {
+        alert('Por favor, confirme o consentimento para tratamento dos dados conforme a LGPD.');
+        hasError = true;
+    }
+
+    if (hasError) {
+        shakeElement(submitBtn);
         return;
     }
 
+    // Estado visual de processamento
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Calculando matriz de riscos...';
+    }
+
     // Calcula score total (soma dos scores de cada resposta)
-    const totalScore = Object.values(quizAnswers).reduce((sum, s) => sum + s, 0);
     // Score máximo: 6 perguntas * 3 pontos = 18. Normaliza para 0–100.
+    const totalScore = [1, 2, 3, 4, 5, 6].reduce((sum, step) => sum + (quizAnswers[step] || 0), 0);
     const scorePercent = Math.round(((18 - totalScore) / 18) * 100);
 
-    let level, desc, waMsg;
+    let level, levelCode, desc, waMsg;
 
     if (scorePercent >= 80) {
-        level  = '🟢 Risco Baixo';
-        desc   = 'Excelente! Sua empresa demonstra maturidade jurídica digital e governança de dados. Recomendamos uma auditoria preventiva periódica para manter a conformidade frente às resoluções recentes da ANPD e novas tecnologias.';
-        waMsg  = `Olá! Realizei o Diagnóstico de Conformidade Digital no site e obtive nível de risco *Baixo* (${scorePercent}/100 pontos). Gostaria de conversar com a Dra. Alexia sobre governança contínua e assessoria especializada para minha empresa.`;
+        level      = '🟢 Risco Baixo';
+        levelCode  = 'BAIXO';
+        desc       = `Excelente! A operação de ${empresa} demonstra maturidade jurídica digital e governança de dados. Recomendamos uma auditoria preventiva periódica para manter a conformidade frente às resoluções recentes da ANPD e novas tecnologias.`;
+        waMsg      = `Olá Dra. Alexia! Meu nome é ${nome}, da empresa ${empresa}. Concluí o Diagnóstico de Conformidade Digital no site com pontuação ${scorePercent}/100 (Risco Baixo). Gostaria de conversar sobre governança contínua e assessoria preventiva.`;
     } else if (scorePercent >= 50) {
-        level  = '🟡 Risco Moderado';
-        desc   = 'Atenção: sua empresa possui práticas preliminares, mas há lacunas críticas em contratos, plano de incidentes ou governança de dados que podem gerar passivos perante a ANPD e clientes.';
-        waMsg  = `Olá! Realizei o Diagnóstico de Conformidade Digital no site e obtive nível de risco *Moderado* (${scorePercent}/100 pontos). Identificamos vulnerabilidades jurídicas que precisamos corrigir. Gostaria de agendar uma consulta.`;
+        level      = '🟡 Risco Moderado';
+        levelCode  = 'MODERADO';
+        desc       = `Atenção: A empresa ${empresa} possui práticas preliminares, mas identificamos lacunas críticas em contratos de tecnologia, plano de resposta a incidentes ou mapeamento de dados que podem gerar passivos regulatórios perante a ANPD.`;
+        waMsg      = `Olá Dra. Alexia! Meu nome é ${nome}, da empresa ${empresa}. Concluí o Diagnóstico de Conformidade Digital no site com pontuação ${scorePercent}/100 (Risco Moderado). Identificamos vulnerabilidades jurídicas que precisamos corrigir. Gostaria de agendar uma consulta.`;
     } else {
-        level  = '🔴 Risco Alto';
-        desc   = 'Urgente: sua operação apresenta alto grau de exposição jurídica, ausência de mapeamento formal e vulnerabilidade em caso de incidentes. É fundamental estruturar um plano de conformidade para evitar sanções regulatórias e perdas financeiras.';
-        waMsg  = `Olá! Realizei o Diagnóstico de Conformidade Digital no site e obtive nível de risco *Alto* (${scorePercent}/100 pontos). Minha empresa precisa urgentemente de assessoria em Direito Digital e adequação LGPD. Podemos conversar?`;
+        level      = '🔴 Risco Alto';
+        levelCode  = 'ALTO';
+        desc       = `Alerta crítico: A operação de ${empresa} apresenta alto grau de exposição jurídica, ausência de mapeamento formal e vulnerabilidade em caso de incidentes. É urgente estruturar um plano de conformidade para evitar sanções e perdas financeiras.`;
+        waMsg      = `Olá Dra. Alexia! Meu nome é ${nome}, da empresa ${empresa}. Concluí o Diagnóstico de Conformidade Digital no site com pontuação ${scorePercent}/100 (Risco Alto). Nossa empresa precisa urgentemente de assessoria especializada em Direito Digital e adequação LGPD.`;
     }
 
-    document.getElementById('quiz-score-value').textContent = scorePercent;
-    document.getElementById('quiz-result-level').textContent = level;
-    document.getElementById('quiz-result-desc').textContent  = desc;
+    // Monta o payload completo do lead
+    const leadPayload = {
+        id: 'lead_' + Date.now(),
+        created_at: new Date().toISOString(),
+        nome: nome,
+        email: email,
+        whatsapp: whatsapp,
+        empresa: empresa,
+        cargo: cargo || 'Não informado',
+        score: scorePercent,
+        nivel_risco: levelCode,
+        status: 'NOVO',
+        respostas: quizAnswersDetails
+    };
 
-    const waLink = document.getElementById('quiz-whatsapp-btn');
-    if (waLink) {
-        waLink.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
+    // Salva no localStorage (persistência offline/local para o painel /admin)
+    try {
+        const storedLeads = JSON.parse(localStorage.getItem('ac_leads_storage') || '[]');
+        storedLeads.unshift(leadPayload);
+        localStorage.setItem('ac_leads_storage', JSON.stringify(storedLeads));
+    } catch (e) {
+        console.warn('Armazenamento local de lead indisponível:', e);
     }
 
-    document.getElementById('quiz-body').style.display = 'none';
-    document.querySelector('.quiz-progress-bar-track').style.display = 'none';
+    // Tenta persistir no backend Serverless (Vercel API) caso disponível
+    fetch('/api/diagnostico', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadPayload)
+    }).catch(err => {
+        // Fallback silencioso (dados já guardados no storage local)
+        console.info('Backend serverless ainda não conectado, lead preservado localmente.');
+    });
 
-    const result = document.getElementById('quiz-result');
-    result.classList.add('active');
+    // Exibe os dados na tela de resultado
+    setTimeout(() => {
+        const badgeEl = document.getElementById('quiz-result-lead-badge');
+        if (badgeEl) {
+            badgeEl.innerHTML = `📋 Relatório preparado para <strong>${nome}</strong> (${empresa})`;
+        }
 
-    updateProgressBar(100);
+        document.getElementById('quiz-score-value').textContent = scorePercent;
+        document.getElementById('quiz-result-level').textContent = level;
+        document.getElementById('quiz-result-desc').textContent  = desc;
+
+        const waLink = document.getElementById('quiz-whatsapp-btn');
+        if (waLink) {
+            waLink.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
+        }
+
+        document.getElementById('quiz-body').style.display = 'none';
+        document.querySelector('.quiz-progress-bar-track').style.display = 'none';
+
+        const result = document.getElementById('quiz-result');
+        result.classList.add('active');
+
+        updateProgressBar(100);
+
+        // Rola suavemente até o resultado
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 600);
 }
 
 function quizReset() {
     quizAnswers = {};
+    quizAnswersDetails = {};
     quizCurrentStep = 1;
 
     document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+
+    const formInputs = ['lead-nome', 'lead-whatsapp', 'lead-email', 'lead-empresa'];
+    formInputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+    });
+
+    const submitBtn = document.getElementById('quiz-btn-submit');
+    if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Gerar Meu Relatório de Riscos';
+    }
 
     document.getElementById('quiz-result').classList.remove('active');
     document.getElementById('quiz-body').style.display = 'block';
@@ -286,10 +427,15 @@ function updateProgressBar(forcePercent = null) {
 function shakeQuizBtn(step) {
     const btn = document.getElementById(`quiz-btn-${step}`);
     if (!btn) return;
-    btn.style.animation = 'none';
-    btn.offsetHeight; // reflow
-    btn.style.animation = 'quizShake 0.4s ease';
-    btn.addEventListener('animationend', () => { btn.style.animation = ''; }, { once: true });
+    shakeElement(btn);
+}
+
+function shakeElement(el) {
+    if (!el) return;
+    el.style.animation = 'none';
+    el.offsetHeight; // reflow
+    el.style.animation = 'quizShake 0.4s ease';
+    el.addEventListener('animationend', () => { el.style.animation = ''; }, { once: true });
 }
 
 // Injeta keyframe de shake dinamicamente
@@ -627,6 +773,137 @@ function updateArticlesCarousel() {
 
     if (prevBtn) prevBtn.disabled = articlesCurrentIndex === 0;
     if (nextBtn) nextBtn.disabled = articlesCurrentIndex >= maxIndex;
+}
+
+
+/* ==========================================================================
+   7. GESTÃO DE CONSENTIMENTO DE COOKIES (LGPD - LEI Nº 13.709/2018)
+   ========================================================================== */
+const COOKIE_STORAGE_KEY = 'ac_cookie_consent_v1';
+
+function initCookieConsent() {
+    const consent = getStoredCookieConsent();
+    const banner = document.getElementById('cookie-banner');
+    const reopenBtn = document.getElementById('cookie-reopen-btn');
+
+    if (consent) {
+        if (reopenBtn) reopenBtn.style.display = 'flex';
+        applyCookiePermissions(consent);
+    } else {
+        setTimeout(() => {
+            if (banner) banner.classList.add('show');
+        }, 900);
+    }
+}
+
+function getStoredCookieConsent() {
+    try {
+        const item = localStorage.getItem(COOKIE_STORAGE_KEY);
+        return item ? JSON.parse(item) : null;
+    } catch (e) {
+        return null;
+    }
+}
+
+function setStoredCookieConsent(preferences) {
+    try {
+        localStorage.setItem(COOKIE_STORAGE_KEY, JSON.stringify(preferences));
+    } catch (e) {
+        console.warn('LocalStorage indisponível para cookies:', e);
+    }
+}
+
+function acceptAllCookies() {
+    const preferences = {
+        necessary: true,
+        analytics: true,
+        marketing: true,
+        timestamp: new Date().toISOString(),
+        version: '1.0'
+    };
+    setStoredCookieConsent(preferences);
+    applyCookiePermissions(preferences);
+    hideCookieBanner();
+    closeCookieModal();
+}
+
+function rejectOptionalCookies() {
+    const preferences = {
+        necessary: true,
+        analytics: false,
+        marketing: false,
+        timestamp: new Date().toISOString(),
+        version: '1.0'
+    };
+    setStoredCookieConsent(preferences);
+    applyCookiePermissions(preferences);
+    hideCookieBanner();
+    closeCookieModal();
+}
+
+function openCookieModal(event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    const modal = document.getElementById('cookie-modal');
+    if (!modal) return;
+
+    const consent = getStoredCookieConsent();
+    const analyticsToggle = document.getElementById('cookie-toggle-analytics');
+    const marketingToggle = document.getElementById('cookie-toggle-marketing');
+
+    if (analyticsToggle) analyticsToggle.checked = consent ? !!consent.analytics : false;
+    if (marketingToggle) marketingToggle.checked = consent ? !!consent.marketing : false;
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCookieModal(event) {
+    if (event && event.target && event.target.id !== 'cookie-modal' && !event.target.closest('.cookie-modal-close')) {
+        return;
+    }
+    const modal = document.getElementById('cookie-modal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+function saveCookiePreferences() {
+    const analyticsToggle = document.getElementById('cookie-toggle-analytics');
+    const marketingToggle = document.getElementById('cookie-toggle-marketing');
+
+    const preferences = {
+        necessary: true,
+        analytics: analyticsToggle ? analyticsToggle.checked : false,
+        marketing: marketingToggle ? marketingToggle.checked : false,
+        timestamp: new Date().toISOString(),
+        version: '1.0'
+    };
+
+    setStoredCookieConsent(preferences);
+    applyCookiePermissions(preferences);
+    hideCookieBanner();
+    closeCookieModal();
+}
+
+function hideCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('show');
+    const reopenBtn = document.getElementById('cookie-reopen-btn');
+    if (reopenBtn) reopenBtn.style.display = 'flex';
+}
+
+function applyCookiePermissions(preferences) {
+    if (preferences.analytics) {
+        window.dispatchEvent(new CustomEvent('ac_analytics_consent_granted'));
+    }
+    if (preferences.marketing) {
+        window.dispatchEvent(new CustomEvent('ac_marketing_consent_granted'));
+    }
 }
 
 
