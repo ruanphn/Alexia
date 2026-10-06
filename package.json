@@ -1,0 +1,19 @@
+{
+  "name": "site-alexia-capibaribe",
+  "version": "1.0.0",
+  "description": "Website Oficial e Portal Administrativo - Dra. Alexia Capibaribe Advocacia",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "keywords": [
+    "direito-digital",
+    "lgpd",
+    "advocacia"
+  ],
+  "author": "Alexia Alencar Capibaribe",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0"
+  }
+}
