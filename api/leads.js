@@ -1,4 +1,12 @@
-import { sql } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
+
+function getDb() {
+    const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.DATABASE_URL_UNPOOLED;
+    if (!connectionString) {
+        return null;
+    }
+    return neon(connectionString);
+}
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -21,9 +29,34 @@ export default async function handler(req, res) {
         return res.status(401).json({ error: 'Acesso não autorizado. Token ausente.' });
     }
 
+    const sql = getDb();
+    if (!sql) {
+        return res.status(200).json({
+            success: false,
+            warning: 'DATABASE_URL não configurada no ambiente.',
+            leads: []
+        });
+    }
+
     try {
-        // Busca os leads ordenados pelo mais recente
-        const { rows } = await sql`
+        // Garante que a tabela existe antes de fazer SELECT
+        await sql`
+            CREATE TABLE IF NOT EXISTS leads_diagnostico (
+                id VARCHAR(100) PRIMARY KEY,
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+                nome VARCHAR(255) NOT NULL,
+                email VARCHAR(255) NOT NULL,
+                whatsapp VARCHAR(50) NOT NULL,
+                empresa VARCHAR(255) NOT NULL,
+                cargo VARCHAR(255),
+                score INTEGER NOT NULL,
+                nivel_risco VARCHAR(50) NOT NULL,
+                status VARCHAR(50) DEFAULT 'NOVO',
+                respostas JSONB
+            );
+        `;
+
+        const rows = await sql`
             SELECT id, created_at, nome, email, whatsapp, empresa, cargo, score, nivel_risco, status, respostas
             FROM leads_diagnostico
             ORDER BY created_at DESC;
@@ -34,12 +67,13 @@ export default async function handler(req, res) {
             leads: rows
         });
     } catch (error) {
-        console.error('Erro ao buscar leads no Vercel Postgres:', error);
+        console.error('Erro ao buscar leads no Neon Postgres:', error);
 
         return res.status(200).json({
             success: false,
-            warning: 'Storage Vercel Postgres ainda não conectado nas variáveis de ambiente.',
-            leads: []
+            warning: 'Erro ao consultar banco de dados Neon.',
+            leads: [],
+            details: error.message
         });
     }
 }
