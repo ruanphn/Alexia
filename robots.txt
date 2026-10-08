@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /admin.html
 Allow: /
 
 Sitemap: https://alexiacapibaribe.adv.br/sitemap.xml

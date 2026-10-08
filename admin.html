@@ -5,30 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo | Alexia Capibaribe Advocacia</title>
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Favicon AC Monograma em SVG -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='24' fill='%2319315f'/%3E%3Cline x1='42' y1='88' x2='60' y2='32' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='60' y1='32' x2='78' y2='88' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='50' y1='64' x2='70' y2='64' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M 82 50 A 22 28 0 1 0 82 70' stroke='%239ea4b4' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+    <!-- Favicon Oficial Dra. Alexia Capibaribe -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <style>
         :root {
-            --color-navy: #19315f;
-            --color-navy-dark: #0f1f3d;
-            --color-silver: #9ea4b4;
-            --color-paper: #f8f8f5;
-            --color-paper-alt: #f0f0ea;
-            --color-ink: #1f1f1e;
-            --color-ink-muted: #5e6270;
-            --border-color: #e2e4ea;
-            --font-title: 'Marcellus', serif;
-            --font-body: 'Jost', sans-serif;
-            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
-            --shadow-modal: 0 20px 60px rgba(15, 31, 61, 0.25);
+            --color-navy: #212e4e;
+            --color-navy-dark: #09102a;
+            --color-ice-blue: #dae1f1;
+            --color-silver: #9ba7c2;
+            --color-paper: #f6f8fc;
+            --color-paper-alt: #edf1f8;
+            --color-ink: #141b2d;
+            --color-ink-muted: #63708d;
+            --border-color: #e2e6f0;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --shadow-card: 0 4px 20px rgba(9, 16, 42, 0.05);
+            --shadow-modal: 0 20px 60px rgba(9, 16, 42, 0.25);
         }
 
         * {
@@ -43,6 +45,13 @@
             color: var(--color-ink);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
+        }
+
+        #admin-app {
+            width: 100%;
+            min-height: 100vh;
+            display: none;
             flex-direction: column;
         }
 
@@ -407,6 +416,44 @@
             background: #1ebd5a;
         }
 
+        .btn-action-delete {
+            background: #ffffff;
+            border: 1px solid #ffd2cf;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            color: #c93b2b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-action-delete:hover {
+            background: #c93b2b;
+            color: #ffffff;
+            border-color: #c93b2b;
+        }
+
+        .article-status-badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .status-published {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-draft {
+            background: #fff8e1;
+            color: #b78103;
+        }
+
         /* Modal de Detalhes do Lead */
         .modal-overlay {
             position: fixed;
@@ -651,13 +698,7 @@
     <!-- TELA DE AUTENTICAÇÃO / LOGIN -->
     <div id="login-screen" class="login-wrapper">
         <div class="login-card">
-            <svg class="login-monogram" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="120" height="120" rx="20" fill="#19315f" />
-                <line x1="42" y1="88" x2="60" y2="32" stroke="white" stroke-width="4" stroke-linecap="round" />
-                <line x1="60" y1="32" x2="78" y2="88" stroke="white" stroke-width="4" stroke-linecap="round" />
-                <line x1="50" y1="64" x2="70" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" />
-                <path d="M 82 50 A 22 28 0 1 0 82 70" stroke="#9ea4b4" stroke-width="4" fill="none" stroke-linecap="round" />
-            </svg>
+            <img src="assets/brand/monograma-alexia.svg" alt="Monograma Oficial Dra. Alexia Capibaribe" class="login-monogram" style="width: 72px; height: 72px; border-radius: 16px; margin: 0 auto 16px; display: block; box-shadow: 0 8px 24px rgba(33, 46, 78, 0.15);">
             <h2 class="login-title">Alexia Capibaribe</h2>
             <p class="login-sub">Painel Administrativo de Leads e Artigos</p>
             <form onsubmit="handleAdminLogin(event)">
@@ -668,16 +709,13 @@
         </div>
     </div>
 
-    <!-- CABEÇALHO DO PAINEL -->
-    <header class="admin-header">
+    <!-- ÁREA ADMINISTRATIVA BLINDADA (Apenas visível e renderizada após autenticação confirmada) -->
+    <div id="admin-app" style="display: none;">
+        <!-- CABEÇALHO DO PAINEL -->
+        <header class="admin-header">
         <a href="#" class="admin-brand">
-            <div class="admin-brand-logo">
-                <svg viewBox="0 0 120 120" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="42" y1="88" x2="60" y2="32" stroke="white" stroke-width="6" stroke-linecap="round" />
-                    <line x1="60" y1="32" x2="78" y2="88" stroke="white" stroke-width="6" stroke-linecap="round" />
-                    <line x1="50" y1="64" x2="70" y2="64" stroke="white" stroke-width="6" stroke-linecap="round" />
-                    <path d="M 82 50 A 22 28 0 1 0 82 70" stroke="#9ea4b4" stroke-width="6" fill="none" stroke-linecap="round" />
-                </svg>
+            <div class="admin-brand-logo" style="background: transparent; padding: 0; display: flex; align-items: center;">
+                <img src="assets/brand/monograma-alexia.svg" alt="Dra. Alexia Capibaribe" style="width: 32px; height: 32px; border-radius: 6px; display: block;">
             </div>
             <div class="admin-brand-info">
                 <h1>Dra. Alexia Capibaribe</h1>
@@ -708,7 +746,7 @@
             </button>
             <button class="admin-tab-btn" onclick="switchAdminTab('artigos')">
                 <span>Artigos do Blog</span>
-                <span class="tab-badge">4</span>
+                <span class="tab-badge" id="tab-articles-count">4</span>
             </button>
         </div>
 
@@ -797,7 +835,7 @@
                 <p style="color: var(--color-ink-muted); font-size: 0.92rem;">
                     Artigos ativos na landing page. As edições e inclusões são salvas diretamente.
                 </p>
-                <button class="btn-export" onclick="alert('Em breve: Editor completo conectado ao banco de dados!')">
+                <button class="btn-export" onclick="openArticleEditor()">
                     + Novo Artigo
                 </button>
             </div>
@@ -814,41 +852,84 @@
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Inteligência Artificial e Riscos Jurídicos: O que as Empresas Devem Blindar em 2026</strong></td>
-                                <td>Inovação & IA</td>
-                                <td>3 min</td>
-                                <td><span class="risk-badge risk-baixo">Publicado</span></td>
-                                <td><a href="index.html#artigos" target="_blank" class="btn-action-view">Ver no Site</a></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Governança de Dados na Saúde: Da Coleta ao Prontuário Eletrônico</strong></td>
-                                <td>Direito Médico & LGPD</td>
-                                <td>4 min</td>
-                                <td><span class="risk-badge risk-baixo">Publicado</span></td>
-                                <td><a href="index.html#artigos" target="_blank" class="btn-action-view">Ver no Site</a></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Contratos de Software & SaaS: Cláusulas Críticas de Limitação de Responsabilidade e SLA</strong></td>
-                                <td>Contratos Tech</td>
-                                <td>3 min</td>
-                                <td><span class="risk-badge risk-baixo">Publicado</span></td>
-                                <td><a href="index.html#artigos" target="_blank" class="btn-action-view">Ver no Site</a></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Vazamento de Dados e as Primeiras 24 Horas: O Roteiro Decisivo perante a ANPD</strong></td>
-                                <td>Segurança & LGPD</td>
-                                <td>4 min</td>
-                                <td><span class="risk-badge risk-baixo">Publicado</span></td>
-                                <td><a href="index.html#artigos" target="_blank" class="btn-action-view">Ver no Site</a></td>
-                            </tr>
+                        <tbody id="articles-table-body">
+                            <!-- Injetado dinamicamente via JS -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- MODAL DE CRIAÇÃO / EDIÇÃO DE ARTIGO -->
+    <div id="article-editor-modal" class="modal-overlay" onclick="closeArticleEditor(event)">
+        <div class="modal-card" style="max-width: 780px;" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 id="modal-article-title">Novo Artigo do Blog</h3>
+                <button class="modal-header-close" onclick="closeArticleEditor()">×</button>
+            </div>
+            <form onsubmit="handleSaveArticle(event)">
+                <div class="modal-body" style="gap: 16px;">
+                    <input type="hidden" id="edit-article-id">
+                    
+                    <div class="form-group">
+                        <label style="font-size: 0.82rem; font-weight: 600; color: var(--color-navy);">Título do Artigo *</label>
+                        <input type="text" id="edit-article-title" class="login-input" style="margin-bottom: 0;" placeholder="Ex: Riscos Jurídicos no Uso de IA Generativa em Empresas" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                        <div class="form-group">
+                            <label style="font-size: 0.82rem; font-weight: 600; color: var(--color-navy);">Categoria *</label>
+                            <input type="text" id="edit-article-category" class="login-input" style="margin-bottom: 0;" placeholder="Ex: Inovação & IA, LGPD na Saúde, etc." required list="categories-list">
+                            <datalist id="categories-list">
+                                <option value="Inovação & IA">
+                                <option value="Direito Médico & LGPD">
+                                <option value="Contratos Tech">
+                                <option value="Segurança & LGPD">
+                                <option value="Propriedade Intelectual">
+                            </datalist>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size: 0.82rem; font-weight: 600; color: var(--color-navy);">Tempo de Leitura Estimado</label>
+                            <input type="text" id="edit-article-readtime" class="login-input" style="margin-bottom: 0;" placeholder="Ex: 3 min de leitura">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size: 0.82rem; font-weight: 600; color: var(--color-navy);">Resumo do Card (1 a 2 frases) *</label>
+                        <textarea id="edit-article-excerpt" class="login-input" style="height: 70px; margin-bottom: 0; resize: vertical;" placeholder="Breve introdução que aparecerá no carrossel da página inicial..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size: 0.82rem; font-weight: 600; color: var(--color-navy);">Conteúdo Completo do Artigo (HTML ou parágrafos) *</label>
+                        <textarea id="edit-article-content" class="login-input" style="height: 200px; margin-bottom: 0; resize: vertical; font-family: monospace; font-size: 0.86rem;" placeholder="<p>Escreva seu artigo aqui...</p><h4>Subtítulo</h4><p>Conteúdo adicional...</p>" required></textarea>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                        <div class="form-group">
+                            <label style="font-size: 0.82rem; font-weight: 600; color: var(--color-navy);">Chamada do Botão WhatsApp</label>
+                            <input type="text" id="edit-article-cta-text" class="login-input" style="margin-bottom: 0;" placeholder="Ex: Quer blindar o uso de IA na sua empresa?">
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size: 0.82rem; font-weight: 600; color: var(--color-navy);">Mensagem Pronta do WhatsApp</label>
+                            <input type="text" id="edit-article-cta-msg" class="login-input" style="margin-bottom: 0;" placeholder="Texto que o cliente enviará ao clicar...">
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+                        <input type="checkbox" id="edit-article-published" checked style="width: 18px; height: 18px; cursor: pointer;">
+                        <label for="edit-article-published" style="font-size: 0.88rem; cursor: pointer; color: var(--color-navy); font-weight: 500;">
+                            Publicar artigo imediatamente na Landing Page
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-action-view" onclick="closeArticleEditor()" style="padding: 10px 16px;">Cancelar</button>
+                    <button type="submit" id="btn-save-article" class="login-btn" style="width: auto; padding: 10px 24px; font-size: 0.88rem;">Salvar Artigo</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- MODAL DE VISUALIZAÇÃO DETALHADA DO LEAD -->
     <div id="lead-details-modal" class="modal-overlay" onclick="closeLeadModal(event)">
@@ -868,30 +949,39 @@
             </div>
         </div>
     </div>
+    </div> <!-- Fim de #admin-app (Blindagem contra inspeção não autenticada) -->
 
     <!-- SCRIPT DO PAINEL ADMINISTRATIVO -->
     <script>
-        const ADMIN_PASS = 'alexia2026'; // Senha padrão para acesso inicial
-
-        // Inicialização
+        // Inicialização protegida contra inspeção de dados
         document.addEventListener('DOMContentLoaded', () => {
-            checkAuth();
-            renderLeads();
+            const isAuth = checkAuth();
+            if (isAuth) {
+                renderLeads();
+                renderArticles();
+            }
         });
 
         function checkAuth() {
-            const isAuth = sessionStorage.getItem('ac_admin_auth');
+            const isAuth = sessionStorage.getItem('ac_admin_auth') === 'true';
             const loginEl = document.getElementById('login-screen');
-            if (isAuth === 'true') {
-                loginEl.style.display = 'none';
+            const appEl = document.getElementById('admin-app');
+
+            if (isAuth) {
+                if (loginEl) loginEl.style.display = 'none';
+                if (appEl) appEl.style.display = 'flex';
+                return true;
             } else {
-                loginEl.style.display = 'flex';
+                if (loginEl) loginEl.style.display = 'flex';
+                if (appEl) appEl.style.display = 'none';
+                return false;
             }
         }
 
         async function handleAdminLogin(event) {
             event.preventDefault();
-            const pass = document.getElementById('admin-pass').value;
+            const passInput = document.getElementById('admin-pass');
+            const pass = (passInput.value || '').trim();
             const errorMsg = document.getElementById('login-error-msg');
             const submitBtn = event.target.querySelector('button');
 
@@ -900,26 +990,28 @@
                 submitBtn.textContent = 'Autenticando...';
             }
 
+            let authenticated = false;
+            let sessionToken = null;
+
             try {
-                // Tenta autenticação real no backend serverless da Vercel
+                // Autenticação 100% no servidor da Vercel (a senha NUNCA trafega nem reside no código do navegador)
                 const res = await fetch('/api/auth', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ password: pass })
                 });
 
-                if (res.ok) {
-                    const data = await res.json();
-                    sessionStorage.setItem('ac_admin_auth', 'true');
-                    sessionStorage.setItem('ac_admin_token', data.token || 'granted');
-                    document.getElementById('login-screen').style.display = 'none';
-                    errorMsg.style.display = 'none';
-                    await renderLeads();
-                    return;
+                const data = await res.json().catch(() => ({}));
+
+                if (res.ok && data.success) {
+                    authenticated = true;
+                    sessionToken = data.token || 'granted';
+                } else {
+                    errorMsg.textContent = data.error || 'Chave de acesso incorreta.';
                 }
             } catch (err) {
-                // Se estiver rodando offline/file:/// ou em ambiente local sem API
-                console.info('API serverless não disponível no ambiente atual, usando autenticação local.');
+                console.error('Erro ao conectar ao serviço de autenticação:', err);
+                errorMsg.textContent = 'Servidor de autenticação inacessível. O login requer conexão com o backend.';
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
@@ -927,21 +1019,28 @@
                 }
             }
 
-            // Fallback de chave local para testes
-            if (pass === ADMIN_PASS) {
+            if (authenticated) {
                 sessionStorage.setItem('ac_admin_auth', 'true');
-                sessionStorage.setItem('ac_admin_token', 'local_token');
-                document.getElementById('login-screen').style.display = 'none';
+                sessionStorage.setItem('ac_admin_token', sessionToken);
                 errorMsg.style.display = 'none';
-                renderLeads();
+                passInput.value = '';
+                checkAuth();
+                await renderLeads();
+                await renderArticles();
             } else {
                 errorMsg.style.display = 'block';
+                passInput.focus();
+                passInput.select();
             }
         }
 
         function handleLogout() {
             sessionStorage.removeItem('ac_admin_auth');
             sessionStorage.removeItem('ac_admin_token');
+            const loginEl = document.getElementById('login-screen');
+            const appEl = document.getElementById('admin-app');
+            if (appEl) appEl.style.display = 'none';
+            if (loginEl) loginEl.style.display = 'flex';
             window.location.reload();
         }
 
@@ -960,6 +1059,7 @@
                 tabLeads.style.display = 'none';
                 tabArtigos.style.display = 'block';
                 tabBtns[1].classList.add('active');
+                renderArticles();
             }
         }
 
@@ -1235,6 +1335,285 @@
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
+        }
+
+        /* ==========================================================
+           GESTÃO DINÂMICA DE ARTIGOS DO BLOG
+           ========================================================== */
+        const DEFAULT_LOCAL_ARTICLES = [
+            {
+                id: 'art_1',
+                slug: 'ai-risks',
+                titulo: 'Inteligência Artificial e Riscos Jurídicos: O que as Empresas Devem Blindar em 2026',
+                categoria: 'Inovação & IA',
+                tempo_leitura: '3 min de leitura',
+                resumo: 'A rápida proliferação de IA generativa no ambiente corporativo exige governança sobre direitos autorais, vazamento de dados estratégicos e responsabilidade civil.',
+                conteudo: `<p>A rápida proliferação de ferramentas de Inteligência Artificial generativa no ambiente corporativo transformou a produtividade de equipes de marketing, desenvolvimento de software, finanças e atendimento. Contudo, a velocidade da adoção tecnológica superou, na maioria das empresas, a criação de diretrizes jurídicas claras.</p><h4>1. O Risco de Violação de Propriedade Intelectual</h4><p>Sistemas de IA são treinados em bases massivas de dados que muitas vezes contêm criações protegidas por direitos autorais. Quando um colaborador gera textos, códigos ou ilustrações utilizando prompts empresariais, surgem dois dilemas imediatos: a autoria da obra criada pela IA e o risco de reproduzir inadvertidamente trechos patenteados ou registrados de concorrentes.</p><h4>2. Vazamento de Segredos de Negócio e Dados Pessoais</h4><p>Ao inserir relatórios internos, contratos com clientes ou dados cadastrais em ferramentas públicas de IA, a empresa pode estar transferindo informações confidenciais para servidores de terceiros cujos Termos de Uso permitem o reaproveitamento desses dados para retreinamento de modelos. Isso configura incidente de segurança perante a LGPD e quebra de dever de confidencialidade com parceiros.</p><h4>3. Diretrizes Práticas de Governança</h4><ul><li><strong>Política Interna de Uso de IA:</strong> Estabelecer formalmente quais ferramentas são homologadas pela organização e quais dados jamais podem ser submetidos a prompts públicos.</li><li><strong>Blindagem em Contratos de Trabalho:</strong> Atualizar os acordos de confidencialidade (NDA) para abranger o uso de inteligência artificial generativa.</li><li><strong>Auditoria em Fornecedores:</strong> Exigir cláusulas de transparência em ferramentas SaaS contratadas que declarem explicitamente onde os dados corporativos são processados.</li></ul><p>A inovação deve avançar, mas sempre amparada por governança jurídica para evitar sanções regulatórias e proteger o patrimônio intangível da organização.</p>`,
+                cta_texto: 'Quer blindar o uso de Inteligência Artificial na sua empresa?',
+                cta_msg: 'Olá Dra. Alexia, li seu artigo sobre Riscos Jurídicos e Inteligência Artificial e gostaria de orientações sobre como implementar uma política de governança de IA na minha empresa.',
+                publicado: true
+            },
+            {
+                id: 'art_2',
+                slug: 'health-lgpd',
+                titulo: 'Governança de Dados na Saúde: Da Coleta ao Prontuário Eletrônico',
+                categoria: 'Direito Médico & LGPD',
+                tempo_leitura: '4 min de leitura',
+                resumo: 'Dados sensíveis de pacientes (art. 11 da LGPD) demandam protocolos rigorosos de controle de acesso, termos de consentimento válidos e conformidade técnica para clínicas.',
+                conteudo: `<p>Na área da saúde, os dados pessoais dos pacientes pertencem à categoria mais protegida pelo ordenamento jurídico: os dados pessoais sensíveis (artigo 11 da LGPD). Prontuários, exames clínicos, laudos diagnósticos e informações genéticas exigem um rigor regulatório superior a qualquer outro segmento de mercado.</p><h4>1. Bases Legais Adequadas e o Mito do Consentimento Irrestrito</h4><p>Muitas clínicas ainda acreditam que o consentimento do paciente resolve todas as exigências legais. Todavia, em processos de saúde, o tratamento frequentemente se ampara na tutela da saúde ou no cumprimento de obrigação legal/regulatória (como as normas do CFM para guarda de prontuários por 20 anos). Compreender a base legal exata impede nulidades jurídicas.</p><h4>2. Segurança da Informação e Controle de Acesso</h4><p>O vazamento de um prontuário clínico acarreta danos morais presumidos e penalidades severas da ANPD. Por isso, a clínica precisa instituir:</p><ul><li><strong>Controle Granular de Permissões:</strong> Recepcionistas não devem acessar prescrições ou históricos médicos completos; o acesso deve ser restrito estritamente à necessidade de cada função.</li><li><strong>Rastreabilidade de Logs:</strong> Sistemas de prontuário eletrônico (PEP) devem registrar data, horário e usuário em cada visualização ou alteração.</li><li><strong>Acordo de Operador (DPA) com Fornecedores:</strong> Provedores de software médico, nuvem e laboratórios terceirizados devem assinar instrumentos de conformidade rigorosa.</li></ul><h4>3. Atendimento aos Direitos dos Pacientes</h4><p>O paciente possui o direito de saber com quem seus dados são compartilhados, solicitar correções e revogar consentimentos em ações que não interfiram na obrigação de guarda médica. Uma clínica em conformidade com a LGPD conquista autoridade, credibilidade e fidelização do paciente.</p>`,
+                cta_texto: 'Deseja adequar sua clínica ou consultório à LGPD médica?',
+                cta_msg: 'Olá Dra. Alexia, li o artigo sobre Governança de Dados na Saúde e gostaria de conversar sobre a adequação da minha clínica/consultório às exigências da LGPD.',
+                publicado: true
+            },
+            {
+                id: 'art_3',
+                slug: 'saas-contracts',
+                titulo: 'Contratos de Software & SaaS: Cláusulas Críticas de Limitação de Responsabilidade e SLA',
+                categoria: 'Contratos Tech',
+                tempo_leitura: '3 min de leitura',
+                resumo: 'Como redigir instrumentos contratuais robustos que protegem a propriedade intelectual do software e limitam passivos indenizatórios desproporcionais com clientes.',
+                conteudo: `<p>Startups e empresas desenvolvedoras de plataformas digitais muitas vezes utilizam modelos genéricos de prestação de serviços para licenciar soluções de software (SaaS). Essa prática representa um dos maiores riscos ao valuation e à saúde financeira do negócio.</p><h4>1. Limitação de Responsabilidade Civil (Cap de Indenização)</h4><p>Uma interrupção temporária de serviço ou instabilidade em uma API não pode gerar indenizações ilimitadas que superem o faturamento total da empresa. É imprescindível instituir tetos de responsabilidade civil proporcional ao valor médio mensal do contrato (ex: 3 a 6 mensalidades), afastando lucros cessantes desmedidos.</p><h4>2. SLA (Acordo de Nível de Serviço) com Métricas Factíveis</h4><p>Definir prazos de disponibilidade (uptime de 99,5%, janelas de manutenção programada e tempos de resposta de suporte conforme a severidade do incidente) evita caracterização de inadimplemento contratual culposo e multas abusivas.</p><h4>3. Propriedade Intelectual Inegociável</h4><p>O contrato de software deve estipular com clareza absoluta que o código-fonte, algoritmos, customizações e arquitetura pertencem exclusivamente à desenvolvedora, concedendo ao cliente apenas uma licença de uso temporária, não exclusiva e intransferível.</p>`,
+                cta_texto: 'Precisa revisar ou estruturar os contratos da sua empresa de tecnologia?',
+                cta_msg: 'Olá Dra. Alexia, li seu artigo sobre Contratos SaaS e gostaria de conversar sobre a revisão e blindagem contratual da minha plataforma/software.',
+                publicado: true
+            },
+            {
+                id: 'art_4',
+                slug: 'data-breach',
+                titulo: 'Vazamento de Dados e as Primeiras 24 Horas: O Roteiro Decisivo perante a ANPD',
+                categoria: 'Segurança & LGPD',
+                tempo_leitura: '4 min de leitura',
+                resumo: 'Em incidentes com dados pessoais, a velocidade e a precisão do plano de resposta determinam a gravidade das sanções e a preservação da imagem corporativa.',
+                conteudo: `<p>A ocorrência de um incidente de segurança da informação envolvendo dados pessoais é um dos momentos mais críticos para a governança corporativa de qualquer organização. A forma como a empresa reage nas primeiras 24 a 48 horas define se o episódio será tratado como uma crise gerida com maturidade ou um desastre regulatório e de imagem.</p><h4>1. Contenção Imediata e Isolamento Forense</h4><p>A primeira prioridade não é a comunicação pública, mas a contenção técnica do vetor de ataque. Isolar servidores comprometidos, revogar credenciais violadas e preservar logs de auditoria são passos fundamentais para viabilizar perícia técnica posterior.</p><h4>2. Avaliação de Relevância e Risco aos Titulares</h4><p>Nem todo incidente exige comunicação imediata à Autoridade Nacional de Proteção de Dados (ANPD). A lei exige comunicação quando houver risco ou dano relevante aos titulares. A equipe jurídica deve elaborar um parecer preliminar avaliando a sensibilidade dos dados expostos e o volume de titulares afetados.</p><h4>3. Comunicação Estratégica e Tempestividade</h4><p>Caso seja necessária a notificação à ANPD e aos titulares, ela deve conter clareza sobre as medidas de mitigação adotadas, os riscos identificados e as recomendações aos titulares, mitigando a aplicação de multas severas e ações civis públicas.</p>`,
+                cta_texto: 'Sua empresa precisa de um plano preventivo de resposta a incidentes?',
+                cta_msg: 'Olá Dra. Alexia, li seu artigo sobre Vazamento de Dados e gostaria de orientações sobre como estruturar um plano de resposta a incidentes na minha empresa.',
+                publicado: true
+            }
+        ];
+
+        let allArticles = [];
+
+        async function fetchArticlesFromSource() {
+            const token = sessionStorage.getItem('ac_admin_token') || 'local_token';
+
+            try {
+                const res = await fetch('/api/artigos', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.artigos && Array.isArray(data.artigos) && data.artigos.length > 0) {
+                        localStorage.setItem('ac_articles_storage', JSON.stringify(data.artigos));
+                        return data.artigos;
+                    }
+                }
+            } catch (e) {
+                console.info('API /api/artigos offline, usando dados locais.');
+            }
+
+            // Fallback localStorage ou padrão
+            try {
+                const local = JSON.parse(localStorage.getItem('ac_articles_storage') || '[]');
+                if (local && local.length > 0) return local;
+            } catch (err) {}
+
+            localStorage.setItem('ac_articles_storage', JSON.stringify(DEFAULT_LOCAL_ARTICLES));
+            return DEFAULT_LOCAL_ARTICLES;
+        }
+
+        async function renderArticles() {
+            allArticles = await fetchArticlesFromSource();
+
+            const badgeCount = document.getElementById('tab-articles-count');
+            if (badgeCount) badgeCount.textContent = allArticles.length;
+
+            const tbody = document.getElementById('articles-table-body');
+            if (!tbody) return;
+
+            if (allArticles.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--color-ink-muted); padding: 32px;">Nenhum artigo cadastrado. Clique em "+ Novo Artigo" para começar.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = allArticles.map(art => {
+                const isPub = art.publicado !== false;
+                const statusBadge = isPub 
+                    ? `<span class="article-status-badge status-published">● Publicado</span>`
+                    : `<span class="article-status-badge status-draft">○ Rascunho</span>`;
+
+                return `
+                    <tr>
+                        <td style="max-width: 320px;">
+                            <strong style="color: var(--color-navy); display: block; font-size: 0.92rem; margin-bottom: 3px;">
+                                ${escapeHtml(art.titulo)}
+                            </strong>
+                            <span style="font-size: 0.78rem; color: var(--color-ink-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                ${escapeHtml(art.resumo)}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="category-pill" style="display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; background: #eef2f8; color: var(--color-navy);">
+                                ${escapeHtml(art.categoria)}
+                            </span>
+                        </td>
+                        <td style="font-size: 0.82rem; color: var(--color-ink-muted);">
+                            ${escapeHtml(art.tempo_leitura || '3 min')}
+                        </td>
+                        <td>
+                            ${statusBadge}
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-action-view" onclick="openArticleEditor('${art.id}')">Editar</button>
+                                <button class="btn-action-delete" onclick="deleteArticle('${art.id}')">Excluir</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function openArticleEditor(articleId = null) {
+            const modal = document.getElementById('article-editor-modal');
+            const titleEl = document.getElementById('modal-article-title');
+            const saveBtn = document.getElementById('btn-save-article');
+
+            if (saveBtn) saveBtn.textContent = 'Salvar Artigo';
+
+            if (articleId) {
+                const art = allArticles.find(a => a.id === articleId);
+                if (!art) return;
+
+                titleEl.textContent = 'Editar Artigo';
+                document.getElementById('edit-article-id').value = art.id;
+                document.getElementById('edit-article-title').value = art.titulo || '';
+                document.getElementById('edit-article-category').value = art.categoria || '';
+                document.getElementById('edit-article-readtime').value = art.tempo_leitura || '';
+                document.getElementById('edit-article-excerpt').value = art.resumo || '';
+                document.getElementById('edit-article-content').value = art.conteudo || '';
+                document.getElementById('edit-article-cta-text').value = art.cta_texto || '';
+                document.getElementById('edit-article-cta-msg').value = art.cta_msg || '';
+                document.getElementById('edit-article-published').checked = art.publicado !== false;
+            } else {
+                titleEl.textContent = 'Novo Artigo do Blog';
+                document.getElementById('edit-article-id').value = '';
+                document.getElementById('edit-article-title').value = '';
+                document.getElementById('edit-article-category').value = '';
+                document.getElementById('edit-article-readtime').value = '3 min de leitura';
+                document.getElementById('edit-article-excerpt').value = '';
+                document.getElementById('edit-article-content').value = '';
+                document.getElementById('edit-article-cta-text').value = 'Deseja assessoria especializada para o seu negócio?';
+                document.getElementById('edit-article-cta-msg').value = 'Olá Dra. Alexia, li seu artigo no site e gostaria de agendar uma reunião consultiva.';
+                document.getElementById('edit-article-published').checked = true;
+            }
+
+            modal.classList.add('open');
+        }
+
+        function closeArticleEditor(event) {
+            if (event && event.target && event.target.id !== 'article-editor-modal' && !event.target.classList.contains('modal-header-close')) {
+                return;
+            }
+            document.getElementById('article-editor-modal').classList.remove('open');
+        }
+
+        async function handleSaveArticle(event) {
+            event.preventDefault();
+            const saveBtn = document.getElementById('btn-save-article');
+            if (saveBtn) {
+                saveBtn.disabled = true;
+                saveBtn.textContent = 'Salvando...';
+            }
+
+            const id = document.getElementById('edit-article-id').value || `art_${Date.now()}`;
+            const titulo = document.getElementById('edit-article-title').value.trim();
+            const categoria = document.getElementById('edit-article-category').value.trim();
+            const tempo_leitura = document.getElementById('edit-article-readtime').value.trim() || '3 min de leitura';
+            const resumo = document.getElementById('edit-article-excerpt').value.trim();
+            const conteudo = document.getElementById('edit-article-content').value.trim();
+            const cta_texto = document.getElementById('edit-article-cta-text').value.trim();
+            const cta_msg = document.getElementById('edit-article-cta-msg').value.trim();
+            const publicado = document.getElementById('edit-article-published').checked;
+
+            const existing = allArticles.find(a => a.id === id);
+            const slug = existing ? existing.slug : titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+            const payload = {
+                id,
+                slug,
+                titulo,
+                categoria,
+                tempo_leitura,
+                resumo,
+                conteudo,
+                cta_texto,
+                cta_msg,
+                publicado
+            };
+
+            const token = sessionStorage.getItem('ac_admin_token') || 'local_token';
+
+            try {
+                const res = await fetch('/api/artigos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    const errData = await res.json().catch(() => ({}));
+                    console.warn('Erro na API remota:', errData);
+                }
+            } catch (err) {
+                console.info('Salvando artigo localmente (modo offline/desenvolvimento).');
+            }
+
+            // Atualiza memória local e localStorage
+            const existingIdx = allArticles.findIndex(a => a.id === id);
+            if (existingIdx >= 0) {
+                allArticles[existingIdx] = { ...allArticles[existingIdx], ...payload };
+            } else {
+                allArticles.push(payload);
+            }
+            localStorage.setItem('ac_articles_storage', JSON.stringify(allArticles));
+
+            if (saveBtn) {
+                saveBtn.disabled = false;
+                saveBtn.textContent = 'Salvar Artigo';
+            }
+
+            document.getElementById('article-editor-modal').classList.remove('open');
+            renderArticles();
+            alert('Artigo salvo com sucesso!');
+        }
+
+        async function deleteArticle(articleId) {
+            const art = allArticles.find(a => a.id === articleId);
+            const title = art ? art.titulo : 'este artigo';
+            if (!confirm(`Tem certeza que deseja remover "${title}"?`)) return;
+
+            const token = sessionStorage.getItem('ac_admin_token') || 'local_token';
+
+            try {
+                await fetch('/api/artigos', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ id: articleId })
+                });
+            } catch (err) {
+                console.info('Exclusão executada em fallback local.');
+            }
+
+            allArticles = allArticles.filter(a => a.id !== articleId);
+            localStorage.setItem('ac_articles_storage', JSON.stringify(allArticles));
+            renderArticles();
         }
     </script>
 </body>

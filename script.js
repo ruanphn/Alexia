@@ -13,34 +13,89 @@ document.addEventListener('DOMContentLoaded', () => {
     initQuiz();
     initArticleModal();
     initArticlesCarousel();
+    initArticlesDynamic();
     initWhatsappWidget();
     initCookieConsent();
 });
 
 
 /* ==========================================================================
-   0. PRELOADER — animação FLIP do monograma para o header
+   0. PRELOADER — Condicionado ao carregamento real (Window + Fontes + Foto Hero)
    ========================================================================== */
 function initPreloader() {
     const preloader     = document.getElementById('preloader');
-    const preloaderMono = document.getElementById('preloader-monogram');
+    if (!preloader) return;
 
-    if (!preloader || !preloaderMono) return;
+    const preloaderLogo = document.getElementById('preloader-logo') || document.getElementById('preloader-monogram');
 
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-    setTimeout(() => {
-        preloaderMono.classList.add('animate-in');
-    }, 100);
+    // Dispara animação de entrada da logomarca
+    if (preloaderLogo) {
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                preloaderLogo.classList.add('animate-in');
+            }, 80);
+        });
+    }
 
-    setTimeout(() => {
+    const startTime = performance.now();
+    const MIN_DISPLAY_TIME = 750; // Tempo mínimo para apreciar a marca com sofisticação
+    const MAX_FAILSAFE_TIME = 2800; // Timeout de segurança absoluto contra rede lenta
+    let dismissed = false;
+
+    function dismissPreloader() {
+        if (dismissed) return;
+        dismissed = true;
+
         preloader.classList.add('fade-out');
-    }, 1000);
-
-    setTimeout(() => {
-        preloader.style.display = 'none';
         document.body.classList.add('loaded');
-    }, 1600);
+
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 700);
+    }
+
+    // Promessa 1: Carregamento completo da janela (DOM + scripts + CSS)
+    const windowLoadPromise = new Promise(resolve => {
+        if (document.readyState === 'complete') {
+            resolve();
+        } else {
+            window.addEventListener('load', resolve, { once: true });
+        }
+    });
+
+    // Promessa 2: Prontidão das fontes web oficiais
+    const fontsReadyPromise = (document.fonts && document.fonts.ready)
+        ? document.fonts.ready.catch(() => {})
+        : Promise.resolve();
+
+    // Promessa 3: Decodificação da imagem principal do Hero (Dra. Alexia)
+    const heroImg = document.querySelector('.hero-photo');
+    const heroImgPromise = heroImg
+        ? (heroImg.complete
+            ? Promise.resolve()
+            : new Promise(resolve => {
+                heroImg.addEventListener('load', resolve, { once: true });
+                heroImg.addEventListener('error', resolve, { once: true });
+            }))
+        : Promise.resolve();
+
+    // Aguarda o término real do carregamento antes de dispensar
+    Promise.all([windowLoadPromise, fontsReadyPromise, heroImgPromise]).then(() => {
+        const elapsed = performance.now() - startTime;
+        const remaining = Math.max(0, MIN_DISPLAY_TIME - elapsed);
+        setTimeout(dismissPreloader, remaining);
+    }).catch(() => {
+        dismissPreloader();
+    });
+
+    // Failsafe de segurança: nunca bloqueia a página mesmo em caso de falha de conexão
+    setTimeout(() => {
+        if (!dismissed) {
+            dismissPreloader();
+        }
+    }, MAX_FAILSAFE_TIME);
 }
 
 
@@ -67,18 +122,22 @@ function initMobileMenu() {
 
     const navLinks = navMenu.querySelectorAll('a');
 
+    function closeMenu() {
+        mobileBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('mobile-menu-open');
+        document.body.style.overflow = '';
+    }
+
     mobileBtn.addEventListener('click', () => {
-        mobileBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        const isOpen = navMenu.classList.toggle('active');
+        mobileBtn.classList.toggle('active', isOpen);
+        document.body.classList.toggle('mobile-menu-open', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileBtn.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+        link.addEventListener('click', closeMenu);
     });
 
     // Fecha menu ao clicar fora
@@ -86,9 +145,7 @@ function initMobileMenu() {
         if (navMenu.classList.contains('active')
             && !navMenu.contains(e.target)
             && !mobileBtn.contains(e.target)) {
-            mobileBtn.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMenu();
         }
     });
 }
@@ -337,7 +394,7 @@ function quizSubmitLead() {
         respostas: quizAnswersDetails
     };
 
-    // Salva no localStorage (persistência offline/local para o painel /admin)
+    // Salva no localStorage para sincronização e contingência local
     try {
         const storedLeads = JSON.parse(localStorage.getItem('ac_leads_storage') || '[]');
         storedLeads.unshift(leadPayload);
@@ -380,8 +437,8 @@ function quizSubmitLead() {
 
         updateProgressBar(100);
 
-        // Rola suavemente até o resultado
-        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Rola suavemente até o resultado respeitando a navbar fixa
+        result.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 600);
 }
 
@@ -721,6 +778,78 @@ function initArticlesCarousel() {
     window.addEventListener('resize', () => {
         updateArticlesCarousel();
     }, { passive: true });
+}
+
+async function initArticlesDynamic() {
+    try {
+        const res = await fetch('/api/artigos');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data.artigos || !Array.isArray(data.artigos) || data.artigos.length === 0) return;
+
+        const published = data.artigos.filter(a => a.publicado !== false);
+        if (published.length === 0) return;
+
+        // Atualiza dicionário ARTICLES_DATA para o modal
+        published.forEach(art => {
+            const key = art.slug || art.id;
+            ARTICLES_DATA[key] = {
+                category: art.categoria,
+                readTime: art.tempo_leitura || '3 min de leitura',
+                date: 'Atualizado em 2026',
+                title: art.titulo,
+                content: art.conteudo,
+                ctaText: art.cta_texto || 'Deseja assessoria especializada para o seu negócio?',
+                ctaMsg: art.cta_msg || `Olá Dra. Alexia, li seu artigo "${art.titulo}" e gostaria de agendar uma reunião.`
+            };
+        });
+
+        // Atualiza os cards no carrossel da landing page
+        const track = document.getElementById('articles-track');
+        if (!track) return;
+
+        const escapeClean = (str) => {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        };
+
+        track.innerHTML = published.map(art => {
+            const key = art.slug || art.id;
+            const isHighlight = art.categoria && art.categoria.toLowerCase().includes('saúde');
+            const highlightClass = isHighlight ? 'article-card-highlight' : '';
+            const badgeClass = isHighlight ? 'badge-health' : '';
+
+            return `
+                <article class="article-card ${highlightClass}" onclick="openArticleModal('${key}')">
+                    <div class="article-card-header">
+                        <span class="article-badge ${badgeClass}">${escapeClean(art.categoria)}</span>
+                        <span class="article-readtime">${escapeClean(art.tempo_leitura || '3 min de leitura')}</span>
+                    </div>
+                    <h3 class="article-title">${escapeClean(art.titulo)}</h3>
+                    <p class="article-excerpt">${escapeClean(art.resumo)}</p>
+                    <div class="article-card-footer">
+                        <span class="article-action-link">
+                            Ler artigo completo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+            `;
+        }).join('');
+
+        articlesCurrentIndex = 0;
+        updateArticlesCarousel();
+    } catch (err) {
+        console.info('Carregando artigos padrão estáticos.');
+    }
 }
 
 function getVisibleArticlesCount() {

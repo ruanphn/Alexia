@@ -14,7 +14,12 @@ export default async function handler(req, res) {
     }
 
     const { password } = req.body || {};
-    const adminPassword = process.env.ADMIN_PASSWORD || 'alexia2026';
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+    if (!adminPassword) {
+        console.error('ERRO DE SEGURANÇA: Variável ADMIN_PASSWORD não configurada no ambiente da Vercel.');
+        return res.status(500).json({ error: 'Chave de administração (ADMIN_PASSWORD) não configurada no servidor.' });
+    }
 
     if (!password) {
         return res.status(400).json({ error: 'Senha obrigatória.' });
