@@ -413,6 +413,13 @@ function quizSubmitLead() {
         console.info('Backend serverless ainda não conectado, lead preservado localmente.');
     });
 
+    // Registra evento no Vercel Web Analytics
+    if (window.va) {
+        try {
+            window.va('event', { name: 'diagnostico_lead_submetido' });
+        } catch (e) {}
+    }
+
     // Exibe os dados na tela de resultado
     setTimeout(() => {
         const badgeEl = document.getElementById('quiz-result-lead-badge');
@@ -591,6 +598,11 @@ function closeWhatsappBubble(event) {
 }
 
 function recordWhatsappClick() {
+    if (window.va) {
+        try {
+            window.va('event', { name: 'whatsapp_contato_iniciado' });
+        } catch (e) {}
+    }
     const chatBox = document.getElementById('whatsapp-chat-box');
     if (chatBox) {
         setTimeout(() => chatBox.classList.remove('open'), 1000);
