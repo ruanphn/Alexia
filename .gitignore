@@ -38,3 +38,10 @@ __pycache__/
 *.bak
 *.swp
 *.swo
+
+# Documentação de entrega e relatórios locais (não enviar ao GitHub)
+DOCUMENTACAO_ENTREGA.md
+*.pdf
+screenshots/
+relatorios/
+
