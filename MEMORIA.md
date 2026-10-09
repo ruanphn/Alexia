@@ -213,3 +213,15 @@ SITE-ALEXIA/
     *   **`script.js`:** Higienização de comentários de desenvolvimento que faziam menção à rota `/admin`.
 *   **Protocolo de Deploy:**
     *   Respeito estrito à diretriz do usuário: nenhum commit ou push no repositório remoto Git sem prévia e explícita autorização.
+
+### 13. Aplicação da Nova Foto (Hero & Currículo) e Otimização Extrema de Imagens (WebP & Picture) (2026-10-09)
+*   **Nova Fotografia da Dra. Alexia no Hero e no Currículo/Sobre:** Inserção da fotografia oficial solicitada (`assets/alexia3.jpg` e `assets/alexia3.webp`), trazendo uma estética calorosa, comunicativa e contemporânea (blazer off-white/creme com conjunto rosa e fundo de tijolos claros), integrada tanto no Hero principal quanto no card de apresentação da seção Sobre / Currículo.
+*   **Resolução do Problema de Tamanho/Peso de Imagens (WebP + `<picture>`):**
+    *   A fotografia antiga do Hero (`alexia2.jpg`) pesava quase 3 MB (2.935 KB). A nova fotografia foi tratada e convertida para WebP moderno (`assets/alexia3.webp`), reduzindo para apenas **125 KB** (**95,7% de economia** de banda).
+    *   A fotografia da certificação Dale Carnegie (`assets/certificado.jpg`) também foi convertida para WebP (`assets/certificado.webp`), caindo de 2,34 MB para **267 KB** (**88,5% de economia**).
+    *   **Economia total combinada:** Redução de **~4,88 MB** na carga inicial de imagens do site, acelerando drasticamente o Largest Contentful Paint (LCP) e o preloader no mobile.
+    *   Implementação da tag moderna `<picture>` com `<source type="image/webp">` e fallback padrão para JPG em navegadores legados no Hero e na seção Sobre.
+*   **Enquadramento & Responsividade:**
+    *   Configuração de `.hero-picture` e `.about-photo-picture` em `display: block; width: 100%; height: 100%;`.
+    *   Alinhamento de `object-position` para valorizar a expressão facial, corte de ombro e blazer sem cortar o topo da cabeça em telas desktop (1440px / 1920px) e em celulares (393px).
+    *   Atualização dos metatags `og:image` e `twitter:image` para exibição correta no compartilhamento social.
